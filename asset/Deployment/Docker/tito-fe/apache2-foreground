@@ -1,0 +1,52 @@
+#!/bin/bash
+set -e
+
+# Note: we don't just use "apache2ctl" here because it itself is just a shell-script wrapper around apache2 which provides extra functionality like "apache2ctl start" for launching apache2 in the background.
+# (also, when run as "apache2ctl <apache args>", it does not use "exec", which leaves an undesirable resident shell process)
+
+: "${APACHE_CONFDIR:=/etc/apache2}"
+: "${APACHE_ENVVARS:=$APACHE_CONFDIR/envvars}"
+if test -f "$APACHE_ENVVARS"; then
+        . "$APACHE_ENVVARS"
+fi
+
+# Apache gets grumpy about PID files pre-existing
+: "${APACHE_PID_FILE:=${APACHE_RUN_DIR:=/var/run/apache2}/apache2.pid}"
+rm -f "$APACHE_PID_FILE"
+
+#if it's running in a kubernetes environement
+if [ -n "$TITO_SQL_SERVICE_SERVICE_HOST" ]; then
+    if [ -n "$PROXY_NAME" ]; then
+     cat <<EOF >> /etc/apache2/mods-enabled/env.conf
+                    <IfModule env_module>
+                            SetEnv TITO-SQL $TITO_SQL_SERVICE_SERVICE_HOST
+                            SetEnv proxy_name $PROXY_NAME
+                            setEnv proxy_port $PROXY_PORT
+                    </IfModule>
+EOF
+    fi
+    else
+        cat <<EOF >> /etc/apache2/mods-enabled/env.conf
+                       <IfModule env_module>
+                               SetEnv TITO-SQL $TITO_SQL_SERVICE_SERVICE_HOST
+                       </IfModule>
+EOF
+fi
+
+#get Tito code
+if [ -z "$(ls -A /var/www/html)" ]; then
+	git clone https://github.com/vmeoc/Tito /var/www/html/
+fi
+
+#if the env variable TITO_VERSION is available, then checkout the needed version.
+
+if [ -n "$TITO_VERSION" ]; then
+    cd /var/www/html/
+    git pull
+    git checkout $TITO_VERSION
+fi
+
+#to have the apache server redirect the flow for ingress
+sed -i '/<IfModule alias_module>/a Alias /tito/ "/var/www/html/"' /etc/apache2/mods-enabled/alias.conf
+
+exec apache2 -DFOREGROUND "$@"

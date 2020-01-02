@@ -1,0 +1,26 @@
+version: '2'
+services:
+  Tito-FE:
+    image: vmeoc/tito-fe:V1.7.1.3
+    ports:
+      - 80
+    networks:
+      - tito-nw
+    restart: always
+    links:
+        - Tito-SQL
+  Tito-SQL:
+    image: vmeoc/tito-sql:V1.5
+    networks:
+      - tito-nw
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: Tito2016
+#removed until automated volume deployment is available
+#    volumes:
+#      - "./data/db:/var/lib/mysql"
+
+ 
+networks:
+   tito-nw:
+    driver: bridge
