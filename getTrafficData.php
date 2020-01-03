@@ -4,7 +4,6 @@ const GOOGLE_API_KEY = "AIzaSyA5ZDRG9r8hBWrtlGsEuJKU2KBg_cCV_Qk";
 
 use OpenTracing\GlobalTracer;
 use OpenTracing\Formats;
-use OpenTracing\GlobalTracer;
 
 $config = Config::getInstance();
 $tracer = $config->initTracer('ALEXexample', '172.19.2.218:6831');
