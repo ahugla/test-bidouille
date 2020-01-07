@@ -43,10 +43,10 @@ if __name__ == '__main__':
 
     # Create Composite reporter.
     # Use ConsoleReporter to output span data to console.
-    #composite_reporter = CompositeReporter(proxy_reporter, direct_reporter, ConsoleReporter())      #  NECESSAIRE ??
+    composite_reporter = CompositeReporter(proxy_reporter, ConsoleReporter())      #  NECESSAIRE ??
 
     # Create Tracer with Composite Reporter.
-    tracer = WavefrontTracer(reporter=proxy_reporter,application_tags=application_tag)
+    tracer = WavefrontTracer(reporter=composite_reporter,application_tags=application_tag)
 
     global_tags = [('global_key', 'global_val')]
 
