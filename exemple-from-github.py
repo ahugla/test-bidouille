@@ -1,5 +1,5 @@
 """
-version: 2
+version: 3
 Examples of Wavefront Opentracing Python SDK.
 
 @author: Hao Song (songhao@vmware.com)
