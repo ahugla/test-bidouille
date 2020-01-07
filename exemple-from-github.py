@@ -39,7 +39,9 @@ if __name__ == '__main__':
         distribution_port=2878,   #40000
         metrics_port=2878
     )
-    proxy_reporter = WavefrontSpanReporter(proxy_client,source='ALEXH_tracing-example')
+    proxy_reporter = WavefrontSpanReporter(proxy_client)
+    #proxy_reporter = WavefrontSpanReporter(proxy_client,source='ALEXH_tracing-example')
+
 
     # Create Composite reporter.
     # Use ConsoleReporter to output span data to console.
@@ -98,3 +100,16 @@ if __name__ == '__main__':
     # Close the tracer
     tracer.close()
     
+
+
+
+  ''' IDEES
+  
+  port 40000 ?
+  source PB ?   virer la source et laisser le default ?
+  tag ou properties 'operations' ?
+
+  '''
+
+
+
