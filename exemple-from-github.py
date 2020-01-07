@@ -43,7 +43,7 @@ if __name__ == '__main__':
 
     # Create Composite reporter.
     # Use ConsoleReporter to output span data to console.
-    composite_reporter = CompositeReporter(proxy_reporter, ConsoleReporter(), source='ALEXH_tracing-example')      #  NECESSAIRE ??
+    composite_reporter = CompositeReporter(proxy_reporter, ConsoleReporter())      #  NECESSAIRE ??
 
     # Create Tracer with Composite Reporter.
     tracer = WavefrontTracer(reporter=composite_reporter,application_tags=application_tag)
