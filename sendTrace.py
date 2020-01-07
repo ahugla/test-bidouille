@@ -14,9 +14,9 @@ import wavefront_opentracing_sdk
 # https://github.com/wavefrontHQ/wavefront-opentracing-sdk-python
 
 from wavefront_sdk.common import ApplicationTags
-application_tags = ApplicationTags(application="ALEXapp", service="ALEXtest")
-
-
+application_tags = ApplicationTags(application="ALEXapp", service="ALEXsvc")
+# application : apparait dans la vue 'application status'
+# service     : 
 
 
 
@@ -34,7 +34,7 @@ from wavefront_sdk import WavefrontProxyClient
    # the default listener port (2878) for sending metrics to 
    # a nondefault interval (2 seconds) for flushing data from the sender to the proxy. Default: 5 seconds
 wavefront_sender = WavefrontProxyClient(
-   host="172.19.2.206",      # MARCHE AVEC LOCALHOST!!!!!
+   host="localhost",      # MARCHE AVEC LOCALHOST!!!!!
    tracing_port=30000,
    distribution_port=2878,
    metrics_port=2878
@@ -54,7 +54,7 @@ from wavefront_sdk import WavefrontProxyClient
 
 wf_span_reporter = wavefront_opentracing_sdk.reporting.WavefrontSpanReporter(
     client=wavefront_sender,
-    source='ALEXH_tracing-example'   # optional nondefault source name
+    source='ALEXH_tracing-example'   # optional nondefault source name - Apparait comme filtre dans "Application status / Details"
 )
 
 
@@ -90,14 +90,21 @@ time.sleep(1)
 
 
 
-
 span3 = tracer.start_span(
         operation_name='span3',
         child_of=span1,
         tags=[('alexkey2','alexvalue2')]
     )
 time.sleep(1)
+
 span3.finish()
+
+
+
+# "Tracer.start_span()" and "Tracer.start_active_span()" will automatically use the current active Span as a parent, 
+# unless the programmer passes a specified parent context or sets "ignore_active_span=True"
+
+
 
 
 
