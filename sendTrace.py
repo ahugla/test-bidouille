@@ -92,7 +92,7 @@ time.sleep(1)
 
 span3 = tracer.start_span(
         operation_name='span3',
-        child_of=span1,
+        child_of=scope,  #was span1
         tags=[('alexkey2','alexvalue2')]
     )
 time.sleep(1)
