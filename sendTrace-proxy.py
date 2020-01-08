@@ -101,5 +101,7 @@ IDEES
   pb de sampling ?  
   laisser tourner pendant 10 min et attendre 10 min
   mettre scope.finish avant scope.close ?
-  no proxy
+  en direct ? no proxy
+  pas les droits avec mon token ?
+  
 """
