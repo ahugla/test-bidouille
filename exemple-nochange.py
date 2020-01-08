@@ -91,6 +91,7 @@ if __name__ == '__main__':
     time.sleep(0.1)
 
     # Close the scope
+    scope.finish()
     scope.close()
 
     # Close the tracer
