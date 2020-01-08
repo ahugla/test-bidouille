@@ -18,7 +18,7 @@ import wavefront_sdk
 if __name__ == '__main__':
 
 
-    application_tag = ApplicationTags(application='ALEXapp',service='ALEXsvc')
+    application_tag = wavefront_sdk.common.ApplicationTags(application='ALEXapp',service='ALEXsvc')
     
 
     # Create Wavefront Span Reporter using Wavefront Proxy Client.
