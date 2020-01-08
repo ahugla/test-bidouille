@@ -18,11 +18,13 @@ application_tag = wavefront_sdk.common.ApplicationTags(application='ALEXapp',ser
     
 
 # Create Wavefront Span Reporter using Wavefront Proxy Client.
+
 proxy_client = wavefront_sdk.WavefrontProxyClient(
         host='localhost',
+        metrics_port=2878,
+        distribution_port=40000,
         tracing_port=30000,
-        distribution_port=2878,
-        metrics_port=2878
+        internal_flush=2
 )
 proxy_reporter = WavefrontSpanReporter(client=proxy_client, source='ALEXH_tracing-example')
 
