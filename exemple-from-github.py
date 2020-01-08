@@ -49,7 +49,8 @@ if __name__ == '__main__':
     #tracer = WavefrontTracer(reporter=composite_reporter,application_tags=application_tag)
 
     # Create Tracer with Composite Reporter.
-    composite_reporter = CompositeReporter(ConsoleReporter(), source='ALEXH_tracing-example')
+    # CompositeReporter takes a list of other reporters and invokes them one by one
+    composite_reporter = CompositeReporter(ConsoleReporter())
     tracer = WavefrontTracer(reporter=composite_reporter, application_tags=application_tag)
 
 
@@ -57,6 +58,7 @@ if __name__ == '__main__':
 
     # Create span1, return a newly started and activated Scope.
     scope = tracer.start_active_span(
+    	source='ALEXH_tracing-example',
         operation_name='span1',
         tags=global_tags,
         ignore_active_span=True,
@@ -67,6 +69,7 @@ if __name__ == '__main__':
 
     # Create span2, span3 child of span1.
     span2 = tracer.start_span(
+    	source='ALEXH_tracing-example',
         operation_name='span2',
         references=opentracing.child_of(span1.context),
         tags=[('span2_key', 'span2_val')]
