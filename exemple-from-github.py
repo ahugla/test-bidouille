@@ -22,7 +22,7 @@ if __name__ == '__main__':
     # Create Wavefront Span Reporter using Wavefront Direct Client.
     direct_client = wavefront_sdk.WavefrontDirectClient(
         server='vmware.wavefront.com',
-        token='PORT',
+        token='TOKEN',
         max_queue_size=50000,
         batch_size=10000,
         flush_interval_seconds=5)
