@@ -23,8 +23,8 @@ proxy_client = wavefront_sdk.WavefrontProxyClient(
         host='localhost',
         metrics_port=2878,
         distribution_port=40000,
-        tracing_port=30000,
-        flushIntervalSeconds=2    # internal_flush=2  not working 
+        tracing_port=30000
+        # internal_flush=2  not working 
 )
 proxy_reporter = WavefrontSpanReporter(client=proxy_client, source='ALEXH_tracing-example')
 
