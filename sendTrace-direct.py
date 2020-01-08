@@ -20,7 +20,7 @@ if __name__ == '__main__':
 
     application_tag = wavefront_sdk.common.ApplicationTags(application='ALEXapp',service='ALEXsvc')
     
-
+    """
     # Create Wavefront Span Reporter using Wavefront Proxy Client.
     proxy_client = wavefront_sdk.WavefrontProxyClient(
         host='localhost',
@@ -29,13 +29,26 @@ if __name__ == '__main__':
         metrics_port=2878
     )
     proxy_reporter = WavefrontSpanReporter(client=proxy_client, source='ALEXH_tracing-example')
+    
+    """
 
+    # Create Wavefront Span Reporter using Wavefront Direct Client.
+    direct_client = wavefront_sdk.WavefrontDirectClient(
+        server='vmware.wavefront.com',
+        token='TOKEN',
+        max_queue_size=50000,
+        batch_size=10000,
+        flush_interval_seconds=5)
+    direct_reporter = WavefrontSpanReporter(direct_client)
+
+ 
 
     # Create Composite reporter.
     # Create Tracer with Composite Reporter.
     # CompositeReporter takes a list of other reporters and invokes them one by one
     # Use ConsoleReporter to output span data to console.
-    composite_reporter = CompositeReporter(proxy_reporter, ConsoleReporter())   
+    composite_reporter = CompositeReporter(direct_reporter, ConsoleReporter())   
+    
     tracer = WavefrontTracer(reporter=composite_reporter, application_tags=application_tag)
 
 
