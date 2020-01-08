@@ -1,10 +1,6 @@
 """
-version: 9
-Examples of Wavefront Opentracing Python SDK.
 
-@author: Hao Song (songhao@vmware.com)
-
-source: https://github.com/wavefrontHQ/wavefront-opentracing-sdk-python
+based on : https://github.com/wavefrontHQ/wavefront-opentracing-sdk-python
 
 """
 import time
