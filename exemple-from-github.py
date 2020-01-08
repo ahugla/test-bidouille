@@ -111,8 +111,10 @@ if __name__ == '__main__':
 IDEES
   
   port 40000 ?
+  comment modifier wavefront :  wavefront.conf ou wavefront.conf.default?
   source PB ?   virer la source et laisser le default ?
   tag ou properties 'operations' ?
+  pb de sampling 
 
 """
 
