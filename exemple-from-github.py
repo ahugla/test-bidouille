@@ -49,7 +49,7 @@ if __name__ == '__main__':
     #tracer = WavefrontTracer(reporter=composite_reporter,application_tags=application_tag)
 
     # Create Tracer with Composite Reporter.
-    composite_reporter = CompositeReporter(ConsoleReporter())
+    composite_reporter = CompositeReporter(ConsoleReporter(), source='ALEXH_tracing-example')
     tracer = WavefrontTracer(reporter=composite_reporter, application_tags=application_tag)
 
 
