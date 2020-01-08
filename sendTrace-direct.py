@@ -48,7 +48,7 @@ if __name__ == '__main__':
     # CompositeReporter takes a list of other reporters and invokes them one by one
     # Use ConsoleReporter to output span data to console.
     composite_reporter = CompositeReporter(direct_reporter, ConsoleReporter())   
-    
+
     tracer = WavefrontTracer(reporter=composite_reporter, application_tags=application_tag)
 
 
@@ -114,5 +114,7 @@ IDEES
   pb de sampling ?  
   laisser tourner pendant 10 min et attendre 10 min
   mettre scope.finish avant scope.close ?
-  no proxy
+  en direct ? no proxy
+  pas les droits avec mon token ?
+  
 """
