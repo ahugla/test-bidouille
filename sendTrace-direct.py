@@ -34,7 +34,7 @@ if __name__ == '__main__':
 
     # Create Wavefront Span Reporter using Wavefront Direct Client.
     direct_client = wavefront_sdk.WavefrontDirectClient(
-        server='vmware.wavefront.com',
+        server='https://vmware.wavefront.com',
         token='TOKEN',
         max_queue_size=50000,
         batch_size=10000,
@@ -116,5 +116,5 @@ IDEES
   mettre scope.finish avant scope.close ?
   en direct ? no proxy
   pas les droits avec mon token ?
-  
+
 """
