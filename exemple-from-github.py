@@ -58,8 +58,7 @@ if __name__ == '__main__':
 
     # Create span1, return a newly started and activated Scope.
     scope = tracer.start_active_span(
-    	source='ALEXH_tracing-example',
-        operation_name='span1',
+    	operation_name='span1',
         tags=global_tags,
         ignore_active_span=True,
         finish_on_close=True
@@ -69,8 +68,7 @@ if __name__ == '__main__':
 
     # Create span2, span3 child of span1.
     span2 = tracer.start_span(
-    	source='ALEXH_tracing-example',
-        operation_name='span2',
+    	operation_name='span2',
         references=opentracing.child_of(span1.context),
         tags=[('span2_key', 'span2_val')]
     )
