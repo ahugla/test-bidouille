@@ -94,6 +94,7 @@ if __name__ == '__main__':
 
 """
 IDEES
+  pb ip et locahost
   port 40000 ?
   source PB ?   virer la source et laisser le default ?
   tag ou properties 'operations' ?
