@@ -49,7 +49,8 @@ if __name__ == '__main__':
     #tracer = WavefrontTracer(reporter=composite_reporter,application_tags=application_tag)
 
     # Create Tracer with Composite Reporter.
-    tracer = WavefrontTracer(reporter=ConsoleReporter(), application_tags=application_tag)
+    composite_reporter = CompositeReporter(ConsoleReporter())
+    tracer = WavefrontTracer(reporter=composite_reporter, application_tags=application_tag)
 
 
     global_tags = [('global_key', 'global_val')]
