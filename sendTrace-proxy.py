@@ -35,8 +35,7 @@ if __name__ == '__main__':
     # Create Tracer with Composite Reporter.
     # CompositeReporter takes a list of other reporters and invokes them one by one
     # Use ConsoleReporter to output span data to console.
-    #composite_reporter = CompositeReporter(proxy_reporter, ConsoleReporter())   
-    composite_reporter = CompositeReporter(ConsoleReporter())   
+    composite_reporter = CompositeReporter(proxy_reporter, ConsoleReporter())   
     tracer = WavefrontTracer(reporter=composite_reporter, application_tags=application_tag)
 
 
