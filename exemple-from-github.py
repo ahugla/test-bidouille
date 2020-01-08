@@ -36,7 +36,7 @@ if __name__ == '__main__':
         distribution_port=2878,   #40000
         metrics_port=2878
     )
-    proxy_reporter = WavefrontSpanReporter(proxy_client,source='ALEXH_tracing-example')
+    proxy_reporter = WavefrontSpanReporter(client=proxy_client, source='ALEXH_tracing-example')
 
 
     # Create Composite reporter.
