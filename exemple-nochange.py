@@ -32,7 +32,7 @@ if __name__ == '__main__':
     proxy_client = wavefront_sdk.WavefrontProxyClient(
         host='127.0.0.1',
         tracing_port=30000,       # --traceListenerPorts 30000   in docker run command
-        distribution_port=2878,   #40000  # --histogramDistListenerPorts 40000  in docker run command
+        distribution_port=40000,  # --histogramDistListenerPorts 40000  in docker run command
         metrics_port=2878         #
     )
     proxy_reporter = WavefrontSpanReporter(proxy_client)
