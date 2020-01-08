@@ -49,7 +49,7 @@ if __name__ == '__main__':
         finish_on_close=True
     )
     span1 = scope.span
-    time.sleep(1)
+    time.sleep(0.1)
 
     # Create span2, span3 child of span1.
     span2 = tracer.start_span(
@@ -63,9 +63,9 @@ if __name__ == '__main__':
         child_of=span1,
         tags=[('span3_key', 'span3_val')]
     )
-    time.sleep(2)
+    time.sleep(0.2)
     span2.finish()
-    time.sleep(1)
+    time.sleep(0.1)
     span3.finish()
 
     # Create span4 follows from span3.
@@ -74,14 +74,14 @@ if __name__ == '__main__':
         references=opentracing.follows_from(span3.context),
         tags=[('span4_key', 'span4_val')]
     )
-    time.sleep(2)
+    time.sleep(0.2)
     span4.finish()
 
     span5 = tracer.start_span(operation_name='span5')
-    time.sleep(1)
+    time.sleep(0.1)
     span5.finish()
 
-    time.sleep(1)
+    time.sleep(0.1)
 
     # Close the scope
     scope.close()
@@ -94,9 +94,8 @@ if __name__ == '__main__':
 
 """
 IDEES
-  
   port 40000 ?
   source PB ?   virer la source et laisser le default ?
   tag ou properties 'operations' ?
-
+  pb de sampling ?  
 """
