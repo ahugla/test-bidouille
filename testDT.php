@@ -9,7 +9,7 @@
 	echo "Runs on : " . gethostname() . " (" . getHostByName(getHostName()) .")";
 
 
-	$command = escapeshellcmd('python3 /tmp/runSingleTest.sh.py');
+	$command = escapeshellcmd('/tmp/runSingleTest.sh');
 	$output = shell_exec($command);
 	echo $output;
 
