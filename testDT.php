@@ -9,7 +9,7 @@
 	echo "Runs on : " . gethostname() . " (" . getHostByName(getHostName()) .")";
 
 
-	$command = escapeshellcmd('/tmp/runSingleTest.sh');
+	$command = escapeshellcmd('bash /tmp/runSingleTest.sh');
 	$output = shell_exec($command);
 	echo $output;
 
@@ -18,3 +18,4 @@
 
 
 </html>
+
