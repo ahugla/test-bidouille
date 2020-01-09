@@ -36,14 +36,16 @@ proxy_client = wavefront_sdk.WavefrontProxyClient(
         tracing_port=30000
         # internal_flush=2  not working 
 )
-proxy_reporter = WavefrontSpanReporter(client=proxy_client, source='ALEXH_tracing-example')
 
+proxy_reporter = WavefrontSpanReporter(client=proxy_client, source='ALEXH_tracing-example')
 
 # Create Composite reporter.
 # Create Tracer with Composite Reporter.
 # CompositeReporter takes a list of other reporters and invokes them one by one
-# Use ConsoleReporter to output span data to console.
+# Use ConsoleReporter to output span data to console
 composite_reporter = CompositeReporter(proxy_reporter, ConsoleReporter())   
+
+
 tracer = WavefrontTracer(reporter=composite_reporter, application_tags=application_tag)
 
 
