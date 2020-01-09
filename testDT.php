@@ -7,6 +7,7 @@
 		<?php
 			echo "Runs on : " . gethostname() . " (" . getHostByName(getHostName()) .")";
 
+			"""
 			sleep(2)
 
 			echo "Tache 1";
@@ -16,6 +17,7 @@
 
 			sleep(2)
 			echo "Tache 3";
+			"""
 		?>
 	</h7>
 
