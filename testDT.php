@@ -8,8 +8,9 @@
 <?php
 	echo "Runs on : " . gethostname() . " (" . getHostByName(getHostName()) .")";
 
-	$output = shell_exec('/tmp/runSingleTest.sh');
-	echo "<pre>$output</pre>";
+	system("/tmp/runSingleTest.sh");
+
+    
 
 ?>
 </h7>
