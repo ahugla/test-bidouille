@@ -8,8 +8,10 @@
 <?php
 	echo "Runs on : " . gethostname() . " (" . getHostByName(getHostName()) .")";
 
-	system("/tmp/runSingleTest.sh");
+   $commmande = "python3 /test/script1.py";
+   exec($commmande);
 
+	
     
 
 ?>
