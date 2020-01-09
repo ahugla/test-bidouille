@@ -1,16 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
-
     <title>Test Distributed Tracing</title>
-
     <h5>Test de DT ... running ... </h5>
 
-	<?php
+	<h7>
+		<?php
 
-	// Show all information, defaults to INFO_ALL
-	//phpinfo();
-
-	?>
+			echo "Runs on : " . gethostname() . " (" . getHostByName(getHostName()) .")";
+		?>
+	</h7>
 
 
 </html>
