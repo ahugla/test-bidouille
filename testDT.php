@@ -9,7 +9,7 @@
 	echo "Runs on : " . gethostname() . " (" . getHostByName(getHostName()) .")";
 
 	$output = shell_exec('ls -al /tmp');
-	echo "<pre>$output</pre>";
+	echo "$output";
 
 ?>
 </h7>
