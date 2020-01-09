@@ -98,13 +98,3 @@ scope.close()
 tracer.close()
     
 
-
-
-"""
-IDEES
-  pb ip et locahost
-  source PB ?   virer la source et laisser le default ?
-  tag ou properties 'operations' ?
-  pb de sampling ?  
-  laisser tourner pendant 10 min et attendre 10 min  
-"""
