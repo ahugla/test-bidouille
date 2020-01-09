@@ -1,8 +1,6 @@
 """
 send a trace to wavefront using proxy
 
-
-
 docker run -d \
     -e WAVEFRONT_URL=https://vmware.wavefront.com/api/ \
     -e WAVEFRONT_TOKEN=73e0e166-5b8b-4877-9ad8-102d3374ee45 \
@@ -14,17 +12,15 @@ docker run -d \
     wavefronthq/proxy:latest
 
 
-
 """
+
+
 import time
-
 import opentracing
-
 from wavefront_opentracing_sdk import WavefrontTracer
 from wavefront_opentracing_sdk.reporting import CompositeReporter
 from wavefront_opentracing_sdk.reporting import ConsoleReporter
 from wavefront_opentracing_sdk.reporting import WavefrontSpanReporter
-
 import wavefront_sdk
 
 
@@ -107,13 +103,8 @@ tracer.close()
 """
 IDEES
   pb ip et locahost
-  port 40000 ?
   source PB ?   virer la source et laisser le default ?
   tag ou properties 'operations' ?
   pb de sampling ?  
-  laisser tourner pendant 10 min et attendre 10 min
-  mettre scope.finish avant scope.close ?
-  en direct ? no proxy
-  pas les droits avec mon token ?
-  
+  laisser tourner pendant 10 min et attendre 10 min  
 """
