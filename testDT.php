@@ -13,8 +13,9 @@
 	#echo "$output";
 
     $output = shell_exec('pwd');
-	echo "<pre>$output</pre>";
-
+	echo "<pre>$output</pre>";     # => /var/www/html
+    $output = shell_exec('whoami');
+	echo "<pre>$output</pre>";   
 
 	#  NO OK
 	# $output = exec("/usr/bin/python3 /tmp/script1.py");
