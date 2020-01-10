@@ -34,6 +34,8 @@
 	    */
 
 
+	$output = shell_exec('/tmp/test-bidouille/sendTrace-proxy.py');
+	echo "<pre>$output</pre>";   
 
 
 

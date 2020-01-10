@@ -1,3 +1,5 @@
+#!/usr/bin/python3
+
 """
 send a trace to wavefront using proxy
 
