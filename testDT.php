@@ -8,12 +8,13 @@
 <?php
 	echo "Runs on : " . gethostname() . " (" . getHostByName(getHostName()) .")";
 
-  
-    $output = 'ma chaine';
-	echo "$output";
-    
-	# $output=exec("/usr/bin/python3 /tmp/script1.py");
+  	#  OK
+    #$output = 'ma chaine';
+	#echo "$output";
 
+    
+	$output = exec("/usr/bin/python3 /tmp/script1.py");
+	echo "$output";
 
 ?>
 
