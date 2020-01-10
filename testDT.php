@@ -4,18 +4,16 @@
 <title>Test Distributed Tracing</title>
 <h5>Test de DT ... running ... </h5>
 
-<h7>
+
 <?php
 	echo "Runs on : " . gethostname() . " (" . getHostByName(getHostName()) .")";
 
    
-   exec("/usr/bin/python3 /tmp/script1.py");
-
-	
+    $output=exec("/usr/bin/python3 /tmp/script1.py");
+	echo $output
     
 
 ?>
-</h7>
 
 
 </html>
