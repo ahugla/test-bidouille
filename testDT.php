@@ -19,8 +19,9 @@
 	#echo "<pre>$output</pre>";      # => apache
 
 	
-	#$output = shell_exec('/var/www/html/script1.py');
-	#echo "<pre>$output</pre>";   
+	# METTRE AU DEBUT :   #!/usr/bin/python3
+	$output = shell_exec('/var/www/html/script1.py');
+	echo "<pre>$output</pre>";   
 
 ?>
 
