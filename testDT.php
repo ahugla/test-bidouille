@@ -9,7 +9,7 @@
 	echo "Runs on : " . gethostname() . " (" . getHostByName(getHostName()) .")";
 
    
-   exec("/usr/bin/python3 /test/script1.py");
+   exec("/usr/bin/python3 /tmp/script1.py");
 
 	
     
