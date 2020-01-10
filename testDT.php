@@ -19,11 +19,16 @@
 	#echo "<pre>$output</pre>";      # => apache
 
 	
-	$output = shell_exec('/var/www/html/script1.py');
-	echo "<pre>$output</pre>";   
+	#$output = shell_exec('/var/www/html/script1.py');
+	#echo "<pre>$output</pre>";   
 
 ?>
 
 
 </html>
 
+
+<!-- 
+# https://wiki.centos-webpanel.com/apache-run-python-script
+
+-->
