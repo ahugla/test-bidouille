@@ -9,8 +9,8 @@
 	echo "Runs on : " . gethostname() . " (" . getHostByName(getHostName()) .")";
 
   
-    $output="ma chaine"
-	echo $output
+    $output = 'ma chaine';
+	echo "$output";
     
 	# $output=exec("/usr/bin/python3 /tmp/script1.py");
 
