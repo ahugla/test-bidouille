@@ -21,6 +21,7 @@
 	# OK
 	# configurer le <Directory "/var/www/html"> dans /etc/httpd/conf/httpd.conf  
 	# METTRE AU DEBUT :   #!/usr/bin/python3    INDISPENSABLE
+	# RENDRE LES FICHIERS EXECUTABLES (chmod)
 	$output = shell_exec('/var/www/html/script1.py');
 	echo "<pre>$output</pre>";   
 
@@ -34,8 +35,8 @@
 	    */
 
 
-	$output = shell_exec('/tmp/test-bidouille/sendTrace-proxy.py');
-	echo "<pre>$output</pre>";   
+	#$output = shell_exec('/tmp/test-bidouille/sendTrace-proxy.py');
+	#echo "<pre>$output</pre>";   
 
 
 
