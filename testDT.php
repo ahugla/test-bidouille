@@ -12,14 +12,15 @@
     #$output = 'ma chaine';
 	#echo "$output";
 
-    $output = shell_exec('pwd');
-	echo "<pre>$output</pre>";     # => /var/www/html
-    $output = shell_exec('whoami');
-	echo "<pre>$output</pre>";   
+	# OK
+    #$output = shell_exec('pwd');
+	#echo "<pre>$output</pre>";      # => /var/www/html
+    #$output = shell_exec('whoami'); 
+	#echo "<pre>$output</pre>";      # => apache
 
-	#  NO OK
-	# $output = exec("/usr/bin/python3 /tmp/script1.py");
-	# echo "$output";
+	
+	$output = shell_exec('/usr/bin/python3 /tmp/script1.py');
+	echo "<pre>$output</pre>";   
 
 ?>
 
