@@ -19,7 +19,7 @@
 	#echo "<pre>$output</pre>";      # => apache
 
 	
-	$output = shell_exec('/usr/bin/python3 /tmp/script1.py');
+	$output = shell_exec('sudo /usr/bin/python3 /tmp/script1.py');
 	echo "<pre>$output</pre>";   
 
 ?>
