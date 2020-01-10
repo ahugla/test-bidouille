@@ -15,7 +15,9 @@ touch /var/www/html/script1.log
 # rendre les fichiers executables
 chmod 777 /var/www/html/*.py
 chmod 777 /var/www/html/script1.log
-chmod 755 /var/www/html/sync.sh
+
+cp /var/www/html/sync.sh  /tmp/sync.sh
+chmod 755 /tmp/sync.sh
 
 
 # redemarrage du service apache
