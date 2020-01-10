@@ -36,8 +36,8 @@
 
 	sleep(3);
 
-    $output = shell_exec('/var/www/html/script1.py');
-	echo "<pre>$output</pre>";   
+    $output2 = shell_exec('/var/www/html/script1.py');
+	echo "<pre>$output2</pre>";   
 
 	#$output = shell_exec('/tmp/test-bidouille/sendTrace-proxy.py');
 	#echo "<pre>$output</pre>";   
