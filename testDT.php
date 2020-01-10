@@ -12,9 +12,13 @@
     #$output = 'ma chaine';
 	#echo "$output";
 
-    
-	$output = exec("/usr/bin/python3 /tmp/script1.py");
-	echo "$output";
+    $output = shell_exec('pwd');
+	echo "<pre>$output</pre>";
+
+
+	#  NO OK
+	# $output = exec("/usr/bin/python3 /tmp/script1.py");
+	# echo "$output";
 
 ?>
 
