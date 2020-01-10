@@ -34,7 +34,7 @@
 	    print(message)
 	    */
 
-	sleep(3);
+	sleep(10);
 
     $output2 = shell_exec('/var/www/html/script1.py');
 	echo "<pre>$output2</pre>";   
