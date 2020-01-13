@@ -34,6 +34,9 @@ composite_reporter = CompositeReporter(ConsoleReporter())
 tracer = WavefrontTracer(reporter=composite_reporter, application_tags=application_tag)
 
 
+global_tags = [('global_key', 'global_val')]
+
+
 scope = tracer.start_active_span(
     	operation_name='span1',
         tags=global_tags,
