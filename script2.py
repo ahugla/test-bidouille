@@ -8,7 +8,7 @@ import sys
 #var2='OK'
 #print('var2 : ' +var2)
 
-#var3=sys.argv[1]
+var3=sys.argv[1]
 #print('argument : ' +var3)
 
 fichier = open("/var/www/html/script2.log", "a")
