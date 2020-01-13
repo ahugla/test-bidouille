@@ -37,12 +37,19 @@
 	sleep(2);    # Attends que le sleep se termine pour afficher la totalité de la page web 
 	
 
-    $output2 = shell_exec('/var/www/html/script2.py ID_123');
+    #shell_exec returns all of the output stream as a string.
+    #exec returns the last line of the output by default, but can provide all output as an array specifed as the second parameter.
+
+    $output2 = shell_exec('/var/www/html/script1.py');
 	echo "<pre>$output2</pre>";   
 
 	#$output = shell_exec('/tmp/test-bidouille/sendTrace-proxy.py');
 	#echo "<pre>$output</pre>";   
 
+
+
+	$cmd = "/var/www/html/script2.py ID_123";
+	$result = shell_exec($cmd);
 
 
 
