@@ -34,7 +34,7 @@
 	    print(message)
 	    */
 
-	sleep(2);    # Attends que le sleep se termine pour afficher la totalité de la page web 
+	sleep(1);    # Attends que le sleep se termine pour afficher la totalité de la page web 
 	
 
     #shell_exec returns all of the output stream as a string.
@@ -47,10 +47,41 @@
 	#echo "<pre>$output</pre>";   
 
 
-
 	$cmd = "/var/www/html/script2.py ID_123";
 	$result = shell_exec($cmd);
 	echo "<pre>$result</pre>";
+
+
+
+
+   # ROOT TRACE
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 ?>
