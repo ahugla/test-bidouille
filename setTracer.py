@@ -27,12 +27,26 @@ proxy_reporter = WavefrontSpanReporter(client=proxy_client, source='ALEXH_tracin
 # Create Tracer with Composite Reporter.
 # CompositeReporter takes a list of other reporters and invokes them one by one
 # Use ConsoleReporter to output span data to console
-composite_reporter = CompositeReporter(proxy_reporter, ConsoleReporter())   
+#composite_reporter = CompositeReporter(proxy_reporter, ConsoleReporter())   
+composite_reporter = CompositeReporter(ConsoleReporter())   
 
 
 tracer = WavefrontTracer(reporter=composite_reporter, application_tags=application_tag)
 
-print('tracer = '+tracer)
+
+scope = tracer.start_active_span(
+    	operation_name='span1',
+        tags=global_tags,
+        ignore_active_span=True,
+        finish_on_close=True
+)
+span1 = scope.span
+
+print('span1 :' +span1)
+
+
+
+scope.close()
 
 tracer.close()
 
