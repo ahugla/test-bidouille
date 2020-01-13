@@ -37,7 +37,7 @@
 	sleep(2);    # Attends que le sleep se termine pour afficher la totalité de la page web 
 	
 
-    $output2 = shell_exec('/var/www/html/script2.py HELLO');
+    $output2 = shell_exec('/var/www/html/script2.py ID_123');
 	echo "<pre>$output2</pre>";   
 
 	#$output = shell_exec('/tmp/test-bidouille/sendTrace-proxy.py');
