@@ -1,5 +1,8 @@
 #!/usr/bin/env python3
 
+# Your need to tell your OS that this is a Python program, otherwise, it's interpreted as a shell script
+
+
 import sys
 
 var2='OK'
