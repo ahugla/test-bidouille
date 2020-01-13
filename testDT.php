@@ -48,7 +48,7 @@
 
 
 
-	$cmd = "/var/www/html/script2.py ID_123";
+	$cmd = "/usr/bin/python3 /var/www/html/script2.py ID_123";
 	$result = shell_exec($cmd);
 
 
