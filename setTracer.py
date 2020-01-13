@@ -32,7 +32,7 @@ composite_reporter = CompositeReporter(proxy_reporter, ConsoleReporter())
 
 tracer = WavefrontTracer(reporter=composite_reporter, application_tags=application_tag)
 
-print('tracer = '+tracer.id)
+print('tracer = '+tracer)
 
 tracer.close()
 
