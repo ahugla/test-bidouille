@@ -34,7 +34,7 @@
 	    print(message)
 	    */
 
-	sleep(10);    # Attends que le sleep se termine pour afficher la totalité de la page web 
+	sleep(2);    # Attends que le sleep se termine pour afficher la totalité de la page web 
 	
 
     $output2 = shell_exec('/var/www/html/script2.py');
