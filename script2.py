@@ -1,9 +1,9 @@
-##!/usr/bin/python3
+#!/usr/bin/env python3
 
 import sys
 
 var2='OK'
-print('argument : ' +var2)
+print('var2 : ' +var2)
 
 var3=sys.argv[1]
 print('argument : ' +var3)
