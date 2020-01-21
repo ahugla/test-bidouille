@@ -18,9 +18,7 @@ $time_after=microtime(true);
 
 # send traces to wavefront  
 #$cmd = "/var/www/html/sendTraces.py 100";
-#$cmd = "/var/www/html/sendTraces.py " .$time_after-$time_before;
-$cmd = "sendTraces.py " . $time_after-$time_before;
-echo $cmd;
+$cmd = "/var/www/html/sendTraces.py " . $time_after-$time_before . "";
 $result = shell_exec($cmd);
 #echo "<pre>$result</pre>";
 
