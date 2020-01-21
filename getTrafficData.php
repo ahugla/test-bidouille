@@ -178,6 +178,11 @@ global $tag_value;
     $time2=microtime(TRUE);
     wavefront(gethostname(), $metric_name,$time2-$time1,$time2, $tag_name, $tag_value);
 
+# send trace to wavefront  
+   $cmd = "/var/www/html/sendTraces.py 0.300";
+   $result = shell_exec($cmd);
+   #echo "<pre>$result</pre>";
+
     return json_decode($response);
 }
 
