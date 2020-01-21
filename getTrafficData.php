@@ -20,7 +20,7 @@ $time_after=microtime(true);
 #$cmd = "/var/www/html/sendTraces.py 100";
 #$cmd = "/var/www/html/sendTraces.py " .$time_after-$time_before;
 $cmd = "sendTraces.py " . $time_after-$time_before;
-echo "<pre>$cmd</pre>";
+echo $cmd;
 $result = shell_exec($cmd);
 #echo "<pre>$result</pre>";
 
