@@ -2,36 +2,6 @@
 
 const GOOGLE_API_KEY = "AIzaSyA5ZDRG9r8hBWrtlGsEuJKU2KBg_cCV_Qk";
 
-use OpenTracing\GlobalTracer;
-use OpenTracing\Formats;
-use jaeger\Config;
-
-$config = Config::getInstance();
-$tracer = $config->initTracer('ALEXexample', '172.19.2.218:6831');
-
-$config->gen128bit();
-
-// Extract from Superglobals
-$spanContext = $tracer->extract(Formats\TEXT_MAP, $_SERVER);
-
-// Start Span
-$serverSpan = $tracer->startSpan('example HTTP', ['child_of' => $spanContext]);
-
-// Distributed context propagation
-$serverSpan->addBaggageItem("version", "2.0.0");
-
-// Inject into Superglobals
-$clientTrace->inject($clientSpan1->spanContext, Formats\TEXT_MAP, $_SERVER);
-
-// Finish span and flush Tracer
-$span->finish();
-$config->flush();
-
-//Close Tracer
-$config->setDisabled(true);
-
-
-
 $metric_name = "google_maps_call_duration";
 $tag_name = "TitoTier";
 $tag_value = "TitoFE";
@@ -177,11 +147,6 @@ global $tag_value;
 #to monitor the google maps call duration_in_traffic
     $time2=microtime(TRUE);
     wavefront(gethostname(), $metric_name,$time2-$time1,$time2, $tag_name, $tag_value);
-
-# send trace to wavefront  
-   #$cmd = "/var/www/html/sendTraces.py 0.300";
-   #$result = shell_exec($cmd);
-   #echo "<pre>$result</pre>";
 
     return json_decode($response);
 }
