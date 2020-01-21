@@ -13,7 +13,7 @@ timeAfter=sys.argv[2]
 timeDelta=float(timeAfter) - float(timeBefore)
 
 
-time.sleep(10)   #in sec
+time.sleep(timeDelta)   #in sec
 
 
 fichier = open("/var/www/html/script2.log", "a")
