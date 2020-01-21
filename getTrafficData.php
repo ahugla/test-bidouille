@@ -12,14 +12,15 @@ $needed_params = array("home_addr", "home_time", "work_addr", "work_time","home_
 
 $params = extractParametersFromUrl($needed_params);
 
+$time_before=microtime(true);
 $result = getTrafficData($params);
-
+$time_after=microtime(true);
 
 # send traces to wavefront  
-      #$cmd = "/var/www/html/sendTraces.py " . $time2-$time1;
-      $cmd = "/var/www/html/sendTraces.py 100";
-      $result = shell_exec($cmd);
-      #echo "<pre>$result</pre>";
+#$cmd = "/var/www/html/sendTraces.py 100";
+$cmd = "/var/www/html/sendTraces.py " . $time_after-$time_before;
+$result = shell_exec($cmd);
+#echo "<pre>$result</pre>";
 
 
 
