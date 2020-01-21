@@ -17,9 +17,9 @@ $result = getTrafficData($params);
 $time_after=microtime(true);
 
 # send traces to wavefront  
-#$cmd = "/var/www/html/sendTraces.py 100";
-$time_delta = 2;
-$cmd = "/var/www/html/sendTraces.py " . $time_delta;
+#$time_delta = 2;
+#$cmd = "/var/www/html/sendTraces.py " . $time_delta;
+$cmd = "/var/www/html/sendTraces.py " . $time_before;
 $resultat = shell_exec($cmd);
 #echo "<pre>$result</pre>";
 
