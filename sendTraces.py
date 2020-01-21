@@ -13,7 +13,7 @@ timeDelta=float(timeAfter) - float(timeBefore)
 
 
 fichier = open("/var/www/html/script2.log", "a")
-message = 'timeBefore: ' +timeBefore +'  et   timeAfter: ' +timeAfter +'   =>   timeDelta=' +timeDelta
+message = 'timeBefore: ' +timeBefore +'  et   timeAfter: ' +timeAfter +'   =>   timeDelta=' +str(timeDelta)
 fichier.write(message)
 fichier.close()
 
