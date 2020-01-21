@@ -9,8 +9,7 @@ timeBefore=sys.argv[1]
 timeAfter=sys.argv[2]
 #print('arguments : ' +timeBefore +' et ' +timeAfter)
 
-timeDelta=timeAfter-timeBefore
-
+timeDelta=float(timeAfter) - float(timeBefore)
 
 
 fichier = open("/var/www/html/script2.log", "a")
