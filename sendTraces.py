@@ -5,19 +5,12 @@
 
 import sys
 
-googleDelay=sys.argv[1]
-#print('argument : ' +googleDelay)
-
-
-
-fichier = open("/var/www/html/script2.log", "a")
-message = 'DEBUT'
-fichier.write(message)
-fichier.close()
-
+timeBefore=sys.argv[1]
+timeAfter=sys.argv[2]
+#print('arguments : ' +timeBefore +' et ' +timeAfter)
 
 fichier = open("/var/www/html/script2.log", "a")
-message = 'googleDelay: ' +googleDelay
+message = 'timeBefore: ' +timeBefore +'  et   timeAfter: ' +timeAfter
 fichier.write(message)
 fichier.close()
 
