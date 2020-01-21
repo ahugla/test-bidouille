@@ -12,10 +12,14 @@ timeAfter=sys.argv[2]
 timeDelta=float(timeAfter) - float(timeBefore)
 
 
+time.sleep(10)
+
+
 fichier = open("/var/www/html/script2.log", "a")
 message = 'timeBefore: ' +timeBefore +'  et   timeAfter: ' +timeAfter +'   =>   timeDelta=' +str(timeDelta)
 fichier.write(message)
 fichier.close()
+
 
 
 
