@@ -4,6 +4,7 @@
 
 
 import sys
+import time
 
 timeBefore=sys.argv[1]
 timeAfter=sys.argv[2]
