@@ -9,10 +9,21 @@ timeBefore=sys.argv[1]
 timeAfter=sys.argv[2]
 #print('arguments : ' +timeBefore +' et ' +timeAfter)
 
+timeDelta=timeAfter-timeBefore
+
+
+
 fichier = open("/var/www/html/script2.log", "a")
-message = 'timeBefore: ' +timeBefore +'  et   timeAfter: ' +timeAfter
+message = 'timeBefore: ' +timeBefore +'  et   timeAfter: ' +timeAfter +'   =>   timeDelta=' +timeDelta
 fichier.write(message)
 fichier.close()
+
+
+
+
+
+
+
 
 #message = 'script2.py completed ! avec variable: ' +googleDelay
 #print(message)
