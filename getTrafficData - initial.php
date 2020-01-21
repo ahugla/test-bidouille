@@ -14,15 +14,6 @@ $params = extractParametersFromUrl($needed_params);
 
 $result = getTrafficData($params);
 
-
-# send traces to wavefront  
-   $cmd = "/var/www/html/sendTraces.py 0.300";
-   $result = shell_exec($cmd);
-   #echo "<pre>$result</pre>";
-
-
-
-
 //------------------------------------------------------------------------------
 
 /**
