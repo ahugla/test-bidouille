@@ -150,6 +150,12 @@ global $tag_value;
     $time2=microtime(TRUE);
     wavefront(gethostname(), $metric_name,$time2-$time1,$time2, $tag_name, $tag_value);
 
+# send traces to wavefront  
+      #$cmd = "/var/www/html/sendTraces.py " . $metric_value;
+      $cmd = "/var/www/html/sendTraces.py 50";
+      $result = shell_exec($cmd);
+      #echo "<pre>$result</pre>";
+      
     return json_decode($response);
 }
 
@@ -228,14 +234,6 @@ function wavefront($source_name,$metric_name,$metric_value,$metric_epoch,$tag_na
       #error_log("wavefront - info : Closing socket...");
       socket_close($socket);
 
-
-
-
-      # send traces to wavefront  
-      #$cmd = "/var/www/html/sendTraces.py " . $metric_value;
-      $cmd = "/var/www/html/sendTraces.py 50";
-      $result = shell_exec($cmd);
-      #echo "<pre>$result</pre>";
    }
 
 }
