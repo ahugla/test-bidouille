@@ -8,6 +8,14 @@ import sys
 googleDelay=sys.argv[1]
 #print('argument : ' +googleDelay)
 
+
+
+fichier = open("/var/www/html/script2.log", "a")
+message = 'DEBUT'
+fichier.write(message)
+fichier.close()
+
+
 fichier = open("/var/www/html/script2.log", "a")
 message = 'googleDelay: ' +googleDelay
 fichier.write(message)
