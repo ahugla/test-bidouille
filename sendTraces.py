@@ -26,7 +26,9 @@ from wavefront_opentracing_sdk.reporting import WavefrontSpanReporter
 import wavefront_sdk
 import sys
 import os
+import random
 from datetime import datetime
+
 
 
 # Calculate time delta
