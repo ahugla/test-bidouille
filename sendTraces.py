@@ -32,12 +32,21 @@ from datetime import datetime
 
 
 
+# function to get a random number < 1
+def getRandomNumber():
+    curr_datetime = datetime.now()
+    curr_sec = curr_datetime.second
+    seed(curr_sec)
+    num=random.random()
+    return num
+
+
 # Calculate time delta
 timeBefore=sys.argv[1]
 timeAfter=sys.argv[2]
 #print('arguments : ' +timeBefore +' et ' +timeAfter)
 timeDelta=float(timeAfter) - float(timeBefore)
-#time.sleep(timeDelta)   #in sec
+
 
 
 # get hostname
@@ -88,7 +97,7 @@ span1 = scope.span
 
 
 # waiting for timeDelta in order to reproduce the Google API call duration
-time.sleep(timeDelta)
+time.sleep(timeDelta)  # en sec, accepte des floats
 
 
 # Create span2, child of span1
@@ -109,24 +118,14 @@ span3 = tracer.start_span(
 
 
 # get random number and sleep for that duration before finishing span2
-curr_datetime = datetime.now()
-curr_sec = curr_datetime.second
-seed(curr_sec)
-num=random.random()
-time.sleep(num)
-
+time.sleep(getRandomNumber())
 span2.finish()
 
 
 
 
 # get random number and sleep for that duration before finishing span3
-curr_datetime = datetime.now()
-curr_sec = curr_datetime.second
-seed(curr_sec)
-num=random.random()
-time.sleep(num)
-
+time.sleep(getRandomNumber())
 span3.finish()
 
 
@@ -137,12 +136,9 @@ span4 = tracer.start_span(
         tags=global_tags
 )
 
-curr_datetime = datetime.now()
-curr_sec = curr_datetime.second
-seed(curr_sec)
-num=random.random()
-time.sleep(num)
 
+# get random number and sleep for that duration before finishing span4
+time.sleep(getRandomNumber())
 span4.finish()
 
 
@@ -154,25 +150,16 @@ span5 = tracer.start_span(
 )
 
 
-curr_datetime = datetime.now()
-curr_sec = curr_datetime.second
-seed(curr_sec)
-num=random.random()
-time.sleep(num)
-
-
+# get random number and sleep for that duration before finishing span5
+time.sleep(getRandomNumber())
 span5.finish()
 
 
-curr_datetime = datetime.now()
-curr_sec = curr_datetime.second
-seed(curr_sec)
-num=random.random()
-time.sleep(num)
 
-
-# Close the scope
+# # get random number and sleep for that duration before closing the scopes/span1
+time.sleep(getRandomNumber())
 scope.close()
+
 
 # Close the tracer
 tracer.close()
