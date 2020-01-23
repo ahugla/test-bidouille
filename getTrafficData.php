@@ -18,8 +18,11 @@ $time_after=microtime(true);
 
 
 # send traces to wavefront  
+
+$home_addr_no_space = str_replace(' ', '', $params['home_addr']);
+$work_addr_no_space = str_replace(' ', '', $params['work_addr']);
 #$cmd = "/var/www/html/sendTraces2.py " . $time_before . "  " . $time_after . " > /dev/null 2>/dev/null &";
-$cmd = "/var/www/html/sendTraces2.py " . $time_before . "  " . $time_after . "  " . $params['home_addr'] . "  " . $params['work_addr'] . " > /dev/null 2>/dev/null &";
+$cmd = "/var/www/html/sendTraces2.py " . $time_before . "  " . $time_after . "  " . $home_addr_no_space . "  " . $work_addr_no_space . " > /dev/null 2>/dev/null &";
 $resultat = shell_exec($cmd);
 #echo "<pre>$result</pre>";
 
