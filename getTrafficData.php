@@ -21,8 +21,8 @@ $time_after=microtime(true);
 
 $home_addr_no_space = str_replace(' ', '', $params['home_addr']);
 $work_addr_no_space = str_replace(' ', '', $params['work_addr']);
-#$cmd = "/var/www/html/sendTraces2.py " . $time_before . "  " . $time_after . " > /dev/null 2>/dev/null &";
-$cmd = "/var/www/html/sendTraces2.py " . $time_before . "  " . $time_after . "  " . $home_addr_no_space . "  " . $work_addr_no_space . " > /dev/null 2>/dev/null &";
+#$cmd = "/var/www/html/sendTraces.py " . $time_before . "  " . $time_after . " > /dev/null 2>/dev/null &";
+$cmd = "/var/www/html/sendTraces.py " . $time_before . "  " . $time_after . "  " . $home_addr_no_space . "  " . $work_addr_no_space . " > /dev/null 2>/dev/null &";
 $resultat = shell_exec($cmd);
 #echo "<pre>$result</pre>";
 

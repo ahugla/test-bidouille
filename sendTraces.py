@@ -41,12 +41,17 @@ def getRandomNumber():
     return num
 
 
+
 # Calculate time delta
 timeBefore=sys.argv[1]
 timeAfter=sys.argv[2]
 #print('arguments : ' +timeBefore +' et ' +timeAfter)
 timeDelta=float(timeAfter) - float(timeBefore)
 
+
+# get Addresses
+Home_Address=sys.argv[3]
+Work_Address=sys.argv[4]
 
 
 # get hostname
@@ -90,7 +95,7 @@ tracer = WavefrontTracer(reporter=composite_reporter, application_tags=applicati
 # Create span1, return a newly started and activated Scope.
 global_tags = [('Showroom', 'France')]
 scope = tracer.start_active_span(
-    	operation_name='Google API calls',
+    	operation_name='journeyRequest',
         tags=global_tags,
         ignore_active_span=True,
         finish_on_close=True
@@ -98,68 +103,58 @@ scope = tracer.start_active_span(
 span1 = scope.span
 
 
-# waiting for timeDelta in order to reproduce the Google API call duration
-time.sleep(timeDelta)  # en sec, accepte des floats
-
 
 # Create span2, child of span1
 span2 = tracer.start_span(
-    	operation_name='Ingest data',
+    	operation_name='ParseRequest',
         references=opentracing.child_of(span1.context),
         tags=global_tags
 )
-span2.log_kv({'foo': 'bar'})
 
 
-# Create span3, child of span1
-span3 = tracer.start_span(
-        operation_name='Analyze',
-        child_of=span1,
-        tags=global_tags
-)
-
-
-# get random number and sleep for that duration before finishing span2
+# waiting for timeDelta in order to reproduce the Google API call duration
 time.sleep(getRandomNumber())
 span2.finish()
 
 
+# Create span3
+dedicated_tags = [('Showroom','France'),('Home_Address',Home_Address),('Work_Address',Work_Address)]
+span3 = tracer.start_span(
+        operation_name='Google API calls',
+        #child_of=span1,
+        tags=dedicated_tags
+)
 
 
-# get random number and sleep for that duration before finishing span3
-time.sleep(getRandomNumber())
+time.sleep(timeDelta)  # en sec, accepte des floats
 span3.finish()
 
 
-# Create span4 follows span3.
+# Create span4
 span4 = tracer.start_span(
-        operation_name='Rendering',
-        references=opentracing.follows_from(span3.context),
+        operation_name='DBupdate',
+        #child_of=span1,
         tags=global_tags
 )
 
 
-# get random number and sleep for that duration before finishing span4
 time.sleep(getRandomNumber())
 span4.finish()
 
 
 
-# Create span5 follows span4
+# Create span5
 span5 = tracer.start_span(
-        operation_name='Update Database',
+        operation_name='Rendering',
+        #child_of=span1,
         tags=global_tags
 )
 
 
-# get random number and sleep for that duration before finishing span5
 time.sleep(getRandomNumber())
 span5.finish()
 
 
-
-# # get random number and sleep for that duration before closing the scopes/span1
-time.sleep(getRandomNumber())
 scope.close()
 
 
