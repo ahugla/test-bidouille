@@ -119,7 +119,7 @@ dedicated_tags = [('Showroom', 'France',HOMEADDRESS,WORKADDRESS)]
 span3 = tracer.start_span(
         operation_name='Google API calls',
         #child_of=span1,
-        tags=global_tags
+        tags=dedicated_tags
 )
 
 
