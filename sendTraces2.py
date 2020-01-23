@@ -41,12 +41,17 @@ def getRandomNumber():
     return num
 
 
+
 # Calculate time delta
 timeBefore=sys.argv[1]
 timeAfter=sys.argv[2]
 #print('arguments : ' +timeBefore +' et ' +timeAfter)
 timeDelta=float(timeAfter) - float(timeBefore)
 
+
+# get Addresses
+Home_Address=sys.argv[3]
+Work_Address=sys.argv[4]
 
 
 # get hostname
@@ -113,8 +118,6 @@ span2.finish()
 
 
 # Create span3
-Home_Address='PARIS'
-Work_Address='NANTERRE'
 dedicated_tags = [('Showroom','France'),('Home_Address',Home_Address),('Work_Address',Work_Address)]
 span3 = tracer.start_span(
         operation_name='Google API calls',
