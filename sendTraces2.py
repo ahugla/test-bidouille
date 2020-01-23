@@ -101,32 +101,32 @@ span1 = scope.span
 
 # Create span2, child of span1
 span2 = tracer.start_span(
-    	operation_name='Google API calls',
+    	operation_name='ParseRequest',
         references=opentracing.child_of(span1.context),
         tags=global_tags
 )
 
 
 # waiting for timeDelta in order to reproduce the Google API call duration
-time.sleep(timeDelta)  # en sec, accepte des floats
+time.sleep(getRandomNumber())
 span2.finish()
 
 
 # Create span3
 span3 = tracer.start_span(
-        operation_name='DBupdate',
+        operation_name='Google API calls',
         #child_of=span1,
         tags=global_tags
 )
 
 
-time.sleep(getRandomNumber())
+time.sleep(timeDelta)  # en sec, accepte des floats
 span3.finish()
 
 
 # Create span4
 span4 = tracer.start_span(
-        operation_name='Rendering',
+        operation_name='DBupdate',
         #child_of=span1,
         tags=global_tags
 )
@@ -135,6 +135,18 @@ span4 = tracer.start_span(
 time.sleep(getRandomNumber())
 span4.finish()
 
+
+
+# Create span5
+span5 = tracer.start_span(
+        operation_name='Rendering',
+        #child_of=span1,
+        tags=global_tags
+)
+
+
+time.sleep(getRandomNumber())
+span5.finish()
 
 
 scope.close()
