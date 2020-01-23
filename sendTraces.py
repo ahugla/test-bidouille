@@ -79,7 +79,9 @@ proxy_reporter = WavefrontSpanReporter(client=proxy_client, source=myhost)
 # CompositeReporter takes a list of other reporters and invokes them one by one
 # Use ConsoleReporter to output span data to console
 # composite_reporter = CompositeReporter(proxy_reporter, ConsoleReporter())   
-composite_reporter = CompositeReporter(proxy_reporter)   
+composite_reporter = CompositeReporter(ConsoleReporter())   
+#composite_reporter = CompositeReporter(proxy_reporter)   
+
 
 tracer = WavefrontTracer(reporter=composite_reporter, application_tags=application_tag)
 
