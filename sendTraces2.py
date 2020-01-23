@@ -113,6 +113,9 @@ span2.finish()
 
 
 # Create span3
+HOMEADDRESS='PARIS'
+WORKADDRESS='NANTERRE'
+dedicated_tags = [('Showroom', 'France',HOMEADDRESS,WORKADDRESS)]
 span3 = tracer.start_span(
         operation_name='Google API calls',
         #child_of=span1,
