@@ -75,10 +75,10 @@ print(proxy_port)
 
 
 
-if proxy_name == "None":
+if proxy_name == 'None':
   print('proxy_name non defini')
 else:
-  if proxy_port == "None":
+  if proxy_port == 'None':
     print('proxy_port non defini')
   else: 
     print('AUCUN EST A None  ---')
