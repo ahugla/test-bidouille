@@ -63,20 +63,8 @@ Work_Address=sys.argv[4]
 
 
 # get wavefront PROXY_NAME and PROXY_PORT  
-'''
-try:
-  proxy_name=os.environ['PROXY_NAME']
-except NameError:
-  print('PROXY_NAME n existe pas')
-
-try:
-  proxy_port=os.environ['PROXY_PORT']
-except NameError:
-  print('PROXY_PORT n existe pas')
-'''
-
-proxy_name=os.getenv('PROXY_NAME')
-proxy_port=os.getenv('PROXY_PRT')
+proxy_name=os.getenv('PROXY_NME')    # retourne None si n'existe pas
+proxy_port=os.getenv('PROXY_PRT')    # retourne None si n'existe pas
 print(proxy_name)
 print(proxy_port)
 
@@ -109,8 +97,8 @@ proxy_reporter = WavefrontSpanReporter(client=proxy_client, source=myhost)
 
 # CompositeReporter takes a list of other reporters and invokes them one by one
 # Use ConsoleReporter to output span data to console
-#composite_reporter = CompositeReporter(proxy_reporter, ConsoleReporter())   
-composite_reporter = CompositeReporter(ConsoleReporter())   
+composite_reporter = CompositeReporter(proxy_reporter, ConsoleReporter())   
+#composite_reporter = CompositeReporter(ConsoleReporter())   
 #composite_reporter = CompositeReporter(proxy_reporter)   
 
 
