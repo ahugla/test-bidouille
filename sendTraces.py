@@ -16,6 +16,14 @@ docker run -d \
 
 """
 
+"""
+
+Utilization de "sendTraces.py":
+sendTraces.py [time_before] [time_after] [Home_Address] [Work_Address]
+
+"""
+
+
 
 import time
 import opentracing
@@ -54,10 +62,14 @@ Home_Address=sys.argv[3]
 Work_Address=sys.argv[4]
 
 
+# get wavefront PROXY_NAME and PROXY_PORT  
+proxy_name=os.environ['HOME']
+print(proxy_name)
+
+
 # get hostname
 myhost = os.uname()[1]
 #print('hote  : ' +myhost)
-
 
 
 #fichier = open("/var/www/html/script2.log", "a")
@@ -84,8 +96,8 @@ proxy_reporter = WavefrontSpanReporter(client=proxy_client, source=myhost)
 # CompositeReporter takes a list of other reporters and invokes them one by one
 # Use ConsoleReporter to output span data to console
 #composite_reporter = CompositeReporter(proxy_reporter, ConsoleReporter())   
-#composite_reporter = CompositeReporter(ConsoleReporter())   
-composite_reporter = CompositeReporter(proxy_reporter)   
+composite_reporter = CompositeReporter(ConsoleReporter())   
+#composite_reporter = CompositeReporter(proxy_reporter)   
 
 
 tracer = WavefrontTracer(reporter=composite_reporter, application_tags=application_tag)
