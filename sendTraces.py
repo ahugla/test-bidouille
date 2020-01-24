@@ -84,7 +84,6 @@ if proxy_name == None or proxy_port == None:
 else:
   #print('Les deux variables Wavefront existent')
 
-
   # Define global tags
   application_tag = wavefront_sdk.common.ApplicationTags(application='TITO',service='journey')
    
@@ -121,6 +120,8 @@ else:
           finish_on_close=True
   )
   span1 = scope.span
+  time.sleep(getRandomNumber())
+  span1.finish()
 
 
 
