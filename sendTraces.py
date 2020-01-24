@@ -70,12 +70,12 @@ myhost = os.uname()[1]
 # get wavefront PROXY_NAME and PROXY_PORT  
 proxy_name=os.getenv('PROXY_NME')    # retourne None si n'existe pas
 proxy_port=os.getenv('PROXY_PORT')    # retourne None si n'existe pas
-print('proxy_name=-'+proxy_name+'-')
-print('proxy_port=-'+proxy_port+'-')
+print(proxy_name)
+print(proxy_port)
 
 
 
-if proxy_name == 'None' or proxy_port == 'None':
+if proxy_name == None or proxy_port == None:
   print('Au moins une des variables d environnement Wavefront n est pas definie')
 else:
   print('Les deux variables Wavefront existent')
