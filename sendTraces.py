@@ -128,7 +128,7 @@ else:
   # Create span2, child of span1
   span2 = tracer.start_span(
       	operation_name='ParseRequest',
-          references=opentracing.child_of(span1.context),
+          #references=opentracing.child_of(span1.context),
           tags=global_tags
   )
 
