@@ -66,12 +66,12 @@ Work_Address=sys.argv[4]
 try:
   proxy_name=os.environ['PROXY_NAME']
 except NameError:
-  print "PROXY_NAME n'existe pas"
+  print('PROXY_NAME n existe pas')
 
 try:
   proxy_port=os.environ['PROXY_PORT']
 except NameError:
-  print "PROXY_PORT n'existe pas"
+  print('PROXY_PORT n existe pas')
 
 
 
