@@ -70,8 +70,8 @@ myhost = os.uname()[1]
 # get wavefront PROXY_NAME and PROXY_PORT  
 proxy_name=os.getenv('PROXY_NME')    # retourne None si n'existe pas
 proxy_port=os.getenv('PROXY_PORT')    # retourne None si n'existe pas
-print(proxy_name)
-print(proxy_port)
+print('proxy_name=-'+proxy_name+'-')
+print('proxy_port=-'+proxy_port+'-')
 
 
 
