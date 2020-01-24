@@ -75,9 +75,14 @@ print(proxy_port)
 
 
 
+if proxy_name == 'None':
+  print('proxy_name non defini')
 
-if (proxy_name != 'None') and (proxy_port != 'None'):
+elif proxy_port == 'None':
+  print('proxy_port non defini')
 
+else: 
+  
   print('AUCUN EST A None')
   
   application_tag = wavefront_sdk.common.ApplicationTags(application='TITO',service='journey')
@@ -175,8 +180,3 @@ if (proxy_name != 'None') and (proxy_port != 'None'):
   # Close the tracer
   tracer.close()
       
-
-else:
-  print('Au moins une variable d environnement wavefront n existe pas')
-
-
