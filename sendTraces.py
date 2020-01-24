@@ -75,8 +75,8 @@ except NameError:
   print('PROXY_PORT n existe pas')
 '''
 
-proxy_name=os.getenv['PROXY_NAME']
-proxy_port=os.getenv['PROXY_PRT']
+proxy_name=os.getenv('PROXY_NAME')
+proxy_port=os.getenv('PROXY_PRT')
 print(proxy_name)
 print(proxy_port)
 
