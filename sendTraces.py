@@ -76,9 +76,6 @@ proxy_port=os.getenv('PROXY_PORT')    # retourne None si n'existe pas
 # On Trace que si les variables Wavefront existent
 if proxy_name == None or proxy_port == None:
   #print('Au moins une des variables d environnement Wavefront n est pas definie')
-  msg='wavefront - error : Au moins une des variables d environnement Wavefront n est pas definie'
-  logging.error(msg)
-
 else:
   #print('Les deux variables Wavefront existent')
 
