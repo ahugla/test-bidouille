@@ -84,9 +84,10 @@ if proxy_name == None or proxy_port == None:
 else:
   #print('Les deux variables Wavefront existent')
 
-  # Define global tags
+  # Define tags
   application_tag = wavefront_sdk.common.ApplicationTags(application='TITO',service='journey')
-   
+  global_tags = [('Showroom','France'),('Home_Address',Home_Address),('Work_Address',Work_Address)]
+
 
   # Create Wavefront Span Reporter using Wavefront Proxy Client.
   proxy_client = wavefront_sdk.WavefrontProxyClient(
@@ -112,7 +113,6 @@ else:
 
 
   # Create span1, return a newly started and activated Scope.
-  global_tags = [('Showroom', 'France')]
   scope = tracer.start_active_span(
       	operation_name='journeyRequest',
           tags=global_tags,
@@ -139,11 +139,10 @@ else:
 
 
   # Create span3
-  dedicated_tags = [('Showroom','France'),('Home_Address',Home_Address),('Work_Address',Work_Address)]
   span3 = tracer.start_span(
           operation_name='Google API calls',
           #child_of=span1,
-          tags=dedicated_tags
+          tags=global_tags
   )
 
 
