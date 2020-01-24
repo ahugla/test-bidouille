@@ -12,6 +12,7 @@ docker run -d \
     -p 2878:2878 \
     -p 30000:30000 \
     -p 40000:40000 \
+    -p 4242:4242 \
     wavefronthq/proxy:latest
 
 """
