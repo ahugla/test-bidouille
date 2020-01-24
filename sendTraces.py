@@ -63,8 +63,10 @@ Work_Address=sys.argv[4]
 
 
 # get wavefront PROXY_NAME and PROXY_PORT  
-proxy_name=os.environ['HOME']
-print(proxy_name)
+proxy_name=os.environ['PROXY_NAME']
+proxy_port=os.environ['PROXY_PORT']
+#print(proxy_name)
+#print(proxy_port)
 
 
 # get hostname
@@ -84,8 +86,8 @@ application_tag = wavefront_sdk.common.ApplicationTags(application='TITO',servic
 
 # Create Wavefront Span Reporter using Wavefront Proxy Client.
 proxy_client = wavefront_sdk.WavefrontProxyClient(
-        host='localhost',
-        metrics_port=2878,
+        host=proxy_name,
+        metrics_port=proxy_port,
         distribution_port=40000,
         tracing_port=30000
 )
