@@ -62,117 +62,121 @@ Home_Address=sys.argv[3]
 Work_Address=sys.argv[4]
 
 
-# get wavefront PROXY_NAME and PROXY_PORT  
-proxy_name=os.getenv('PROXY_NME')    # retourne None si n'existe pas
-proxy_port=os.getenv('PROXY_PRT')    # retourne None si n'existe pas
-print(proxy_name)
-print(proxy_port)
-
-
 # get hostname
 myhost = os.uname()[1]
 #print('hote  : ' +myhost)
 
 
-#fichier = open("/var/www/html/script2.log", "a")
-#message = 'timeBefore: ' +timeBefore +'  et   timeAfter: ' +timeAfter +'   =>   timeDelta=' +str(timeDelta)
-#fichier.write(message)
-#fichier.close()
+# get wavefront PROXY_NAME and PROXY_PORT  
+proxy_name=os.getenv('PROXY_NAME')    # retourne None si n'existe pas
+proxy_port=os.getenv('PROXY_PORT')    # retourne None si n'existe pas
+print(proxy_name)
+print(proxy_port)
 
 
 
-application_tag = wavefront_sdk.common.ApplicationTags(application='TITO',service='journey')
+
+if proxy_name != 'None' and proxy_port != 'None':
+
+  print('AUCUN EST A None')
+  
+  application_tag = wavefront_sdk.common.ApplicationTags(application='TITO',service='journey')
     
 
-# Create Wavefront Span Reporter using Wavefront Proxy Client.
-proxy_client = wavefront_sdk.WavefrontProxyClient(
-        host=proxy_name,
-        metrics_port=proxy_port,
-        distribution_port=40000,
-        tracing_port=30000
-)
+  # Create Wavefront Span Reporter using Wavefront Proxy Client.
+  proxy_client = wavefront_sdk.WavefrontProxyClient(
+          host=proxy_name,
+          metrics_port=proxy_port,
+          distribution_port=40000,
+          tracing_port=30000
+  )
 
-proxy_reporter = WavefrontSpanReporter(client=proxy_client, source=myhost)
-
-
-# CompositeReporter takes a list of other reporters and invokes them one by one
-# Use ConsoleReporter to output span data to console
-composite_reporter = CompositeReporter(proxy_reporter, ConsoleReporter())   
-#composite_reporter = CompositeReporter(ConsoleReporter())   
-#composite_reporter = CompositeReporter(proxy_reporter)   
+  
+  proxy_reporter = WavefrontSpanReporter(client=proxy_client, source=myhost)
 
 
-tracer = WavefrontTracer(reporter=composite_reporter, application_tags=application_tag)
+  # CompositeReporter takes a list of other reporters and invokes them one by one
+  # Use ConsoleReporter to output span data to console
+  #composite_reporter = CompositeReporter(proxy_reporter, ConsoleReporter())   
+  composite_reporter = CompositeReporter(ConsoleReporter())   
+  #composite_reporter = CompositeReporter(proxy_reporter)   
 
 
-
-# Create span1, return a newly started and activated Scope.
-global_tags = [('Showroom', 'France')]
-scope = tracer.start_active_span(
-    	operation_name='journeyRequest',
-        tags=global_tags,
-        ignore_active_span=True,
-        finish_on_close=True
-)
-span1 = scope.span
+  tracer = WavefrontTracer(reporter=composite_reporter, application_tags=application_tag)
 
 
 
-# Create span2, child of span1
-span2 = tracer.start_span(
-    	operation_name='ParseRequest',
-        references=opentracing.child_of(span1.context),
-        tags=global_tags
-)
-
-
-# waiting for timeDelta in order to reproduce the Google API call duration
-time.sleep(getRandomNumber())
-span2.finish()
-
-
-# Create span3
-dedicated_tags = [('Showroom','France'),('Home_Address',Home_Address),('Work_Address',Work_Address)]
-span3 = tracer.start_span(
-        operation_name='Google API calls',
-        #child_of=span1,
-        tags=dedicated_tags
-)
-
-
-time.sleep(timeDelta)  # en sec, accepte des floats
-span3.finish()
-
-
-# Create span4
-span4 = tracer.start_span(
-        operation_name='DBupdate',
-        #child_of=span1,
-        tags=global_tags
-)
-
-
-time.sleep(getRandomNumber())
-span4.finish()
+  # Create span1, return a newly started and activated Scope.
+  global_tags = [('Showroom', 'France')]
+  scope = tracer.start_active_span(
+      	operation_name='journeyRequest',
+          tags=global_tags,
+          ignore_active_span=True,
+          finish_on_close=True
+  )
+  span1 = scope.span
 
 
 
-# Create span5
-span5 = tracer.start_span(
-        operation_name='Rendering',
-        #child_of=span1,
-        tags=global_tags
-)
+  # Create span2, child of span1
+  span2 = tracer.start_span(
+      	operation_name='ParseRequest',
+          references=opentracing.child_of(span1.context),
+          tags=global_tags
+  )
 
 
-time.sleep(getRandomNumber())
-span5.finish()
+  # waiting for timeDelta in order to reproduce the Google API call duration
+  time.sleep(getRandomNumber())
+  span2.finish()
 
 
-scope.close()
+  # Create span3
+  dedicated_tags = [('Showroom','France'),('Home_Address',Home_Address),('Work_Address',Work_Address)]
+  span3 = tracer.start_span(
+          operation_name='Google API calls',
+          #child_of=span1,
+          tags=dedicated_tags
+  )
 
 
-# Close the tracer
-tracer.close()
-    
+  time.sleep(timeDelta)  # en sec, accepte des floats
+  span3.finish()
+
+
+  # Create span4
+  span4 = tracer.start_span(
+          operation_name='DBupdate',
+          #child_of=span1,
+          tags=global_tags
+  )
+
+
+  time.sleep(getRandomNumber())
+  span4.finish()
+
+
+
+  # Create span5
+  span5 = tracer.start_span(
+          operation_name='Rendering',
+          #child_of=span1,
+          tags=global_tags
+  )
+
+
+  time.sleep(getRandomNumber())
+  span5.finish()
+
+
+  scope.close()
+
+
+  # Close the tracer
+  tracer.close()
+      
+
+else:
+  print('Au moins une variable d environnement wavefront n existe pas')
+
 
