@@ -63,8 +63,9 @@ Work_Address=sys.argv[4]
 
 
 # get wavefront PROXY_NAME and PROXY_PORT  
+'''
 try:
-  proxy_name=os.environ['PROXY_NME']
+  proxy_name=os.environ['PROXY_NAME']
 except NameError:
   print('PROXY_NAME n existe pas')
 
@@ -72,11 +73,10 @@ try:
   proxy_port=os.environ['PROXY_PORT']
 except NameError:
   print('PROXY_PORT n existe pas')
+'''
 
-
-
-#proxy_name=os.environ['PROXY_NAME']
-#proxy_port=os.environ['PROXY_PORT']
+proxy_name=os.getenv['PROXY_NAME']
+proxy_port=os.getenv['PROXY_PRT']
 print(proxy_name)
 print(proxy_port)
 
