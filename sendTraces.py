@@ -78,12 +78,17 @@ proxy_port=os.getenv('PROXY_PORT')    # retourne None si n'existe pas
 if proxy_name == None or proxy_port == None:
   #print('Au moins une des variables d environnement Wavefront n est pas definie')
   # Pas besoin de logguer car c est deja fait dans getTrafficData.php
-  logging.info('Au moins une des variables d environnement Wavefront n est pas definie')
-  logging.warning('Au moins une des variables d environnement Wavefront n est pas definie')
+  fichier = open("/var/www/html/sendTraces.log", "a")
+  fichier.write("Au moins une des variables d environnement Wavefront n est pas definie")
+  fichier.close()
+
+
 else:
   #print('Les deux variables Wavefront existent')
-  logging.info('Les deux variables Wavefront existent')
-  logging.warning('Les deux variables Wavefront existent')
+  fichier = open("/var/www/html/sendTraces.log", "a")
+  fichier.write("Les deux variables Wavefront existent")
+  fichier.close()
+
 
   # Define global tags
   application_tag = wavefront_sdk.common.ApplicationTags(application='TITO',service='journey')
