@@ -35,6 +35,7 @@ import wavefront_sdk
 import sys
 import os
 import random
+import logging
 from random import seed
 from datetime import datetime
 
@@ -75,9 +76,13 @@ proxy_port=os.getenv('PROXY_PORT')    # retourne None si n'existe pas
 # On Trace que si les variables Wavefront existent
 if proxy_name == None or proxy_port == None:
   #print('Au moins une des variables d environnement Wavefront n est pas definie')
+  msg='wavefront - error : Au moins une des variables d environnement Wavefront n est pas definie'
+  logging.error(msg)
+
 else:
   #print('Les deux variables Wavefront existent')
 
+  # Define global tags
   application_tag = wavefront_sdk.common.ApplicationTags(application='TITO',service='journey')
    
 
@@ -96,8 +101,8 @@ else:
   # CompositeReporter takes a list of other reporters and invokes them one by one
   # Use ConsoleReporter to output span data to console
   #composite_reporter = CompositeReporter(proxy_reporter, ConsoleReporter())   
-  #composite_reporter = CompositeReporter(ConsoleReporter())   
-  composite_reporter = CompositeReporter(proxy_reporter)   
+  composite_reporter = CompositeReporter(ConsoleReporter())   
+  #composite_reporter = CompositeReporter(proxy_reporter)   
 
 
   tracer = WavefrontTracer(reporter=composite_reporter, application_tags=application_tag)
