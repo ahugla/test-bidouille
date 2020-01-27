@@ -1,9 +1,12 @@
 #!/usr/bin/env python3
 # Your need to tell your OS that this is a Python program, otherwise, it's interpreted as a shell script
 
-"""
-send a trace to wavefront using proxy : 
 
+"""
+
+Proxy Wavefront
+---------------
+Send a trace to wavefront using proxy : 
 docker run -d \
     -e WAVEFRONT_URL=https://vmware.wavefront.com/api/ \
     -e WAVEFRONT_TOKEN=7xxxxxxxxxxxxxxxxxxxxxxxxxxxx5 \
@@ -15,13 +18,28 @@ docker run -d \
     -p 4242:4242 \
     wavefronthq/proxy:latest
 
-"""
 
-"""
+Pre-requis
+----------
+  -   Python3
+  -   Script Python 'sendTraces.py' doit etre executable
+  -   Variables wavefont proxy 'PROXY_NAME' et 'PROXY_PORT' dans /etc/sysconfig/httpd
+  -   Activer l'execution de script Python : 
+      Dans  /etc/httpd/conf/httpd.conf  ajouter:
+          <Directory "/var/www/html">
+              AllowOverride None
+              Options +ExecCGI
+              AddHandler cgi-script .cgi .pl .py
+              Require all granted
+          </Directory>
 
-Utilization de "sendTraces.py":
+
+Utilization
+-----------
+Utilization de "sendTraces.py en ligne de commande":
 sendTraces.py [time_before] [time_after] [Home_Address] [Work_Address]
-
+      ex : sendTraces.py  4  5  paris  nanterre
+      
 """
 
 
