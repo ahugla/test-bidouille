@@ -42,7 +42,8 @@ retour = 1
 counter = 0
 while (retour == 1) and (counter < counter_max):
   # Creation de la commande
-  cmd_to_execute="salt-key --list=pre | grep " +minion +" | wc -l"
+  # cmd_to_execute="salt-key --list=pre | grep " +minion +" | wc -l"
+  cmd_to_execute="salt-key --list=pre | grep " +minion
   print("command to execute : " +cmd_to_execute)
   # execution SSH
   retour=executeSSHcommand(salt_master,username,salt_master_password,cmd_to_execute)
