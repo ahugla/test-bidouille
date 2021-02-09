@@ -37,8 +37,8 @@ minion="vra-001111"
 print("server salt master : " +salt_master)
 
 
-wait_for_master()
-print("fin du sleep")
+#wait_for_master()
+#print("fin du sleep")
 
 
 
