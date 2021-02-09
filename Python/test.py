@@ -4,6 +4,11 @@ import paramiko     # pip3 install paramiko
 import time         # pas besoin de metttre en dependance car deja dans librairie par defaut
 
 #-----------------------------
+# Variables
+counter_sleep = 2 # counter sleep duration in while loop
+
+
+#-----------------------------
 
 def executeSSHcommand(server, login, password, command):
   client = paramiko.SSHClient()
@@ -37,7 +42,7 @@ print("fin du sleep")
 
 
 
-#On attent que le minion soit en etat "unregistered"
+#On attent que le minion soit en etat "unregistered" ou que le counter soit a 10 tentatives
 retour = "0"
 counter = 0
 while (retour == "0") and (counter < 10):
@@ -47,7 +52,7 @@ while (retour == "0") and (counter < 10):
   # execution SSH
   #retour=executeSSHcommand(salt_master,username,salt_master_password,cmd_to_execute)
   print("retour: " +retour)
-  time.sleep(1) 
+  time.sleep(counter_sleep) 
   counter = counter + 1
   print("counter: " +str(counter))
 
