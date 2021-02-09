@@ -40,7 +40,7 @@ print("fin du sleep")
 #On attent que le minion soit en etat "unregistered"
 retour = "0"
 counter = 0
-while (retour == "0") or (counter < 10):
+while (retour == "0") and (counter < 10):
   # Creation de la commande
   cmd_to_execute="salt-key --list=pre | grep " +minion +" | wc -l"
   print("command to execute : " +cmd_to_execute)
