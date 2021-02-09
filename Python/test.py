@@ -6,7 +6,7 @@ import time         # pas besoin de metttre en dependance car deja dans librairi
 #-----------------------------Variables
 
 counter_sleep = 2 # duree entre chaque tentative
-counter_max = 100 # nombre de tentavives max
+counter_max = 10 # nombre de tentavives max
 #salt_master = "vrasaltstack.cpod-vrealize.az-fkd.cloud-garage.net"
 salt_master = "10.11.10.29"
 username="root"
@@ -27,7 +27,7 @@ def executeSSHcommand(server, login, password, command):
   for line in ssh_stdout:
     print('... ' + line.strip('\n'))
   client.close()
-  local_retour = "OK"
+  local_retour = 1
   return local_retour
 
 #-----------------------------
@@ -37,9 +37,9 @@ print("server salt master : " +salt_master)
 
 
 #On attent que le minion soit en etat "unregistered" ou que le counter soit a 10 tentatives
-retour = "0"
+retour = 1
 counter = 0
-while (retour == "0") and (counter < counter_max):
+while (retour == 1) and (counter < counter_max):
   # Creation de la commande
   cmd_to_execute="salt-key --list=pre | grep " +minion +" | wc -l"
   print("command to execute : " +cmd_to_execute)
