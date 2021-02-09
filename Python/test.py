@@ -24,8 +24,9 @@ def executeSSHcommand(server, login, password, command):
   client.connect(server, username=login, password=password)
   ssh_stdin, ssh_stdout, ssh_stderr = client.exec_command(command)
   # affichage de la sortie de la commande
-  for line in ssh_stdout:
-    print('... ' + line.strip('\n'))
+  #for line in ssh_stdout:
+  # print('... ' + line.strip('\n'))
+  print("trucmuch : " +ssh_stdout.find("vra-"))
   client.close()
   local_retour = 1
   return local_retour
