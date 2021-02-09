@@ -24,8 +24,8 @@ def executeSSHcommand(server, login, password, command):
 
 #-----------------------------
 
-def wait_for_master():
-  time.sleep(5)  
+#def wait_for_master():
+#  time.sleep(5)  
 
 #----------------------------- 
  
