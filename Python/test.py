@@ -47,7 +47,7 @@ while (retour == 1) and (counter < counter_max):
   retour=executeSSHcommand(salt_master,username,salt_master_password,cmd_to_execute)
   time.sleep(counter_sleep) 
   counter = counter + 1
-  print("retour: " +retour)
+  print("retour: " +str(retour))
   print("counter: " +str(counter))
 
 
