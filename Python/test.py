@@ -18,18 +18,22 @@ minion="vra-001517"
 
 #-----------------------------
 
-def executeSSHcommand(server, login, password, command):
+def executeSSHcommand(server, login, password, command, minion):
   client = paramiko.SSHClient()
   client.set_missing_host_key_policy(paramiko.MissingHostKeyPolicy())    # pas de check de clé
   client.connect(server, username=login, password=password)
   ssh_stdin, ssh_stdout, ssh_stderr = client.exec_command(command)
   # affichage de la sortie de la commande
-  #for line in ssh_stdout:
-  # print('... ' + line.strip('\n'))
-  print("trucmuch : " +str(ssh_stdout.find("vra-")))
+  for line in ssh_stdout:
+    print('... ' + line.strip('\n'))
+    trouve = line.find(minion)
+    print("trouve : " +trouve)
+
   client.close()
   local_retour = 1
   return local_retour
+
+
 
 #-----------------------------
 #logs
@@ -43,10 +47,11 @@ counter = 0
 while (retour == 1) and (counter < counter_max):
   # Creation de la commande
   # cmd_to_execute="salt-key --list=pre | grep " +minion +" | wc -l"
-  cmd_to_execute="salt-key --list=pre | grep " +minion
+  #cmd_to_execute="salt-key --list=pre | grep " +minion
+  cmd_to_execute="salt-key --list-all | grep " +minion      # REMPLACER PAR  --list=pre
   print("command to execute : " +cmd_to_execute)
   # execution SSH
-  retour=executeSSHcommand(salt_master,username,salt_master_password,cmd_to_execute)
+  retour=executeSSHcommand(salt_master,username,salt_master_password,cmd_to_execute, minion)
   time.sleep(counter_sleep) 
   counter = counter + 1
   print("retour: " +str(retour))
