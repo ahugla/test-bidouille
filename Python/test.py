@@ -26,7 +26,7 @@ def executeSSHcommand(server, login, password, command):
   # affichage de la sortie de la commande
   #for line in ssh_stdout:
   # print('... ' + line.strip('\n'))
-  print("trucmuch : " +ssh_stdout.find("vra-"))
+  print("trucmuch : " +str(ssh_stdout.find("vra-")))
   client.close()
   local_retour = 1
   return local_retour
@@ -43,7 +43,7 @@ counter = 0
 while (retour == 1) and (counter < counter_max):
   # Creation de la commande
   # cmd_to_execute="salt-key --list=pre | grep " +minion +" | wc -l"
-  cmd_to_execute="salt-key --list=pre | grep " +minion +""
+  cmd_to_execute="salt-key --list=pre | grep " +minion
   print("command to execute : " +cmd_to_execute)
   # execution SSH
   retour=executeSSHcommand(salt_master,username,salt_master_password,cmd_to_execute)
