@@ -27,7 +27,7 @@ def executeSSHcommand(server, login, password, command, minion):
   for line in ssh_stdout:
     print('... ' + line.strip('\n'))
     trouve = line.find(minion)
-    print("trouve : " +trouve)
+    print("trouve : " +str(trouve))
 
   client.close()
   local_retour = 1
