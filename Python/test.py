@@ -3,10 +3,18 @@
 import paramiko     # pip3 install paramiko
 import time         # pas besoin de metttre en dependance car deja dans librairie par defaut
 
-#-----------------------------
-# Variables
-counter_sleep = 2 # counter sleep duration in while loop
+#-----------------------------Variables
 
+counter_sleep = 2 # duree entre chaque tentative
+counter_max = 100 # nombre de tentavives max
+#salt_master = "vrasaltstack.cpod-vrealize.az-fkd.cloud-garage.net"
+salt_master = "10.11.10.29"
+username="root"
+#salt_master_password = "VMware1!"
+salt_master_password = "changeme"
+
+#TEMP
+minion="vra-001517"
 
 #-----------------------------
 
@@ -23,37 +31,23 @@ def executeSSHcommand(server, login, password, command):
   return local_retour
 
 #-----------------------------
-
-#def wait_for_master():
-#  time.sleep(5)  
-
-#----------------------------- 
- 
-salt_master = "vrasaltstack.cpod-vrealize.az-fkd.cloud-garage.net"
-username="root"
-salt_master_password = "VMware1!"
-minion="vra-001111"
 #logs
 print("server salt master : " +salt_master)
-
-
-#wait_for_master()
-#print("fin du sleep")
 
 
 
 #On attent que le minion soit en etat "unregistered" ou que le counter soit a 10 tentatives
 retour = "0"
 counter = 0
-while (retour == "0") and (counter < 10):
+while (retour == "0") and (counter < counter_max):
   # Creation de la commande
   cmd_to_execute="salt-key --list=pre | grep " +minion +" | wc -l"
   print("command to execute : " +cmd_to_execute)
   # execution SSH
-  #retour=executeSSHcommand(salt_master,username,salt_master_password,cmd_to_execute)
-  print("retour: " +retour)
+  retour=executeSSHcommand(salt_master,username,salt_master_password,cmd_to_execute)
   time.sleep(counter_sleep) 
   counter = counter + 1
+  print("retour: " +retour)
   print("counter: " +str(counter))
 
 
