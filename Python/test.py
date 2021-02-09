@@ -49,6 +49,7 @@ while (retour == "0") or (counter < 10):
   print("retour: " +retour)
   time.sleep(1) 
   counter = counter + 1
+  print("counter: " +counter)
 
 
 
