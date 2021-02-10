@@ -59,7 +59,7 @@ while (retour == "ABSENT") and (counter < counter_max):
   # Creation de la commande
   # cmd_to_execute="salt-key --list=pre | grep " +minion +" | wc -l"
   #cmd_to_execute="salt-key --list=pre | grep " +minion
-  print("Recherche du minion, tentative " +str(counter) +"/" +counter_max +". Retry toutes les " +counter_sleep +" secondes")
+  print("Recherche du minion, tentative " +str(counter) +"/" +str(counter_max) +". Retry toutes les " +str(counter_sleep) +" secondes")
   cmd_to_execute="salt-key --list-all | grep " +minion      # REMPLACER PAR  --list=pre
   print("command to execute : " +cmd_to_execute)
   # execution SSH
