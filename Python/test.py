@@ -25,9 +25,16 @@ def executeSSHcommand(server, login, password, command, minion):
   ssh_stdin, ssh_stdout, ssh_stderr = client.exec_command(command)
   # affichage de la sortie de la commande
   for line in ssh_stdout:
-    print('... ' + line.strip('\n'))
-    print("ligne = " +line)
-    print("trouve : " +str(trouve))
+    if line == "\n":
+      print("Empty Line")
+    else:
+      print('... ' + line.strip('\n'))
+      trouve = line.find(minion)
+      if trouve == -1:
+        print("ABSENT")
+      if trouve == 0:
+        print("TROUVE")
+      print("trouve : " +str(trouve))
 
 
 
