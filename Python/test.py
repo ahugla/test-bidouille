@@ -13,8 +13,8 @@ username="root"
 #salt_master_password = "VMware1!"   # A CHANGER
 salt_master_password = "changeme"
 
-#TEMP
-minion="vra-001517"
+#TEMP 
+minion="vra-001517"   # A CHANGER
 
 #-----------------------------
 
