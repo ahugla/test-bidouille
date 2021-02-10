@@ -70,12 +70,12 @@ while (retour == "ABSENT") and (counter < counter_max):
 # si c'est trouvé on passe la commande d'acceptation du minion
 if retour == "TROUVE":
   cmd_to_execute="salt-key -y --accept=" +minion +"*"
-  print("Le minion a été trouvé en 'Unaccepted key' ")
+  print("Le minion " +minion +" a été trouvé en 'Unaccepted key' ")
   print("command to execute : " +cmd_to_execute)
   retour=executeSSHcommand_ACCEPT(salt_master,username,salt_master_password,cmd_to_execute)
-  print("Le minion a été accepté")
+  print("Le minion " +minion +" a été accepté")
 else: 
-  print("Le minion n'a  pas été trouvé en 'Unaccepted Key'!!")
+  print("Le minion " +minion +" n'a pas été trouvé en 'Unaccepted Key'!!")
 
 
 
