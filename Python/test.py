@@ -8,7 +8,7 @@ import time         # pas besoin de metttre en dependance car deja dans librairi
 counter_sleep = 2 # duree entre chaque tentative
 counter_max = 10 # nombre de tentavives max
 #salt_master = "vrasaltstack.cpod-vrealize.az-fkd.cloud-garage.net"
-salt_master = "10.11.10.29"
+salt_master = "10.11.10.29"        # A CHANGER
 username="root"
 #salt_master_password = "VMware1!"
 salt_master_password = "changeme"
@@ -26,8 +26,10 @@ def executeSSHcommand(server, login, password, command, minion):
   # affichage de la sortie de la commande
   for line in ssh_stdout:
     print('... ' + line.strip('\n'))
-    trouve = line.find(minion)
+    print("ligne = " +line)
     print("trouve : " +str(trouve))
+
+
 
   client.close()
   local_retour = 1
