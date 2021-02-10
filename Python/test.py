@@ -12,9 +12,7 @@ salt_master = "10.11.10.29"        # A CHANGER
 username="root"
 #salt_master_password = "VMware1!"   # A CHANGER
 salt_master_password = "changeme"
-
-#TEMP 
-minion="vra-001517"   # A CHANGER
+minion = inputs["resourceNames"][0]
 
 #-----------------------------
 
@@ -71,7 +69,7 @@ if retour == "TROUVE":
   print("Le minion " +minion +" a été trouvé en 'Unaccepted key' ")
   print("command to execute : " +cmd_to_execute)
   retour=executeSSHcommand_ACCEPT(salt_master,username,salt_master_password,cmd_to_execute)
-  print("Le minion " +minion +" a été accepté")
+  print("Le minion " +minion +" a été accepté sur le Salt Master")
 else: 
   print("Le minion " +minion +" n'a pas été trouvé en 'Unaccepted Key'!!")
 
