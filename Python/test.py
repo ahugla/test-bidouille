@@ -24,22 +24,17 @@ def executeSSHcommand(server, login, password, command, minion):
   client.connect(server, username=login, password=password)
   ssh_stdin, ssh_stdout, ssh_stderr = client.exec_command(command)
   # affichage de la sortie de la commande
+  local_retour = "ABSENT"
   for line in ssh_stdout:
-    if line == "\n":
-      print("Empty Line")
+    #print('... ' + line.strip('\n'))
+    trouve = line.find(minion)
+    if trouve == 0:
+      print("TROUVE")
+      local_retour = "TROUVE"
     else:
-      print('... ' + line.strip('\n'))
-      trouve = line.find(minion)
-      if trouve == -1:
-        print("ABSENT")
-      if trouve == 0:
-        print("TROUVE")
-      print("trouve : " +str(trouve))
-
-
-
+      print("ABSENT")
+      local_retour = "ABSENT"
   client.close()
-  local_retour = 1
   return local_retour
 
 
@@ -53,7 +48,7 @@ print("server salt master : " +salt_master)
 #On attent que le minion soit en etat "unregistered" ou que le counter soit a 10 tentatives
 retour = 1
 counter = 0
-while (retour == 1) and (counter < counter_max):
+while (retour == "ABSENT") and (counter < counter_max):
   # Creation de la commande
   # cmd_to_execute="salt-key --list=pre | grep " +minion +" | wc -l"
   #cmd_to_execute="salt-key --list=pre | grep " +minion
@@ -63,8 +58,12 @@ while (retour == 1) and (counter < counter_max):
   retour=executeSSHcommand(salt_master,username,salt_master_password,cmd_to_execute, minion)
   time.sleep(counter_sleep) 
   counter = counter + 1
-  print("retour: " +str(retour))
+  print("retour: " retour)
   print("counter: " +str(counter))
+
+
+
+
 
 
 
