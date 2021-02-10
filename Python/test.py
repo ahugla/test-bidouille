@@ -49,7 +49,6 @@ print("server salt master : " +salt_master)
 print("VM minion : " +minion)
 
 
-
 #On attent que le minion soit en etat "unregistered" ou que le counter soit a 10 tentatives
 retour = "ABSENT"
 counter = 0
@@ -63,8 +62,7 @@ while (retour == "ABSENT") and (counter < counter_max):
   # execution SSH
   retour=executeSSHcommand_FIND(salt_master,username,salt_master_password,cmd_to_execute, minion)
   time.sleep(counter_sleep) 
-  counter = counter + 1
-  
+  counter = counter + 1  
 
 
 # si c'est trouvé on passe la commande d'acceptation du minion
