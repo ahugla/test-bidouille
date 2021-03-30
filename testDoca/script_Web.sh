@@ -1,8 +1,8 @@
 
 
 # sur CentOS 7 showroom
-# WEB test : 10.11.10.36   vra-002512
-# URL :  http://10.11.10.36/poc.php
+# WEB test : 10.11.10.37
+# URL :  http://IP/poc.php
 
 
 
@@ -20,7 +20,7 @@ echo "DB_password = " $DB_password
 
 # installs additionnelles dont php
 rpm -Uvh https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
-yum install -y httpd php5 mysql php-mysql
+yum install -y git wget vim httpd php mysql php-mysql
 #rpm -Uvh http://rpms.famillecollet.com/enterprise/remi-release-7.rpm
 #yum --enablerepo=remi,remi-php72 install -y httpd php php-common php5 mysql php-mysql
 
@@ -57,7 +57,6 @@ EOF
 
 # Update de poc.php pour DB
 sed -i -e "s/$serveur = 'localhost';/$serveur = '"$DB_IP"';/g"  /var/www/html/poc.php
-sed -i -e "s/$user = 'testndcuser';/$user = 'root';/g"  /var/www/html/poc.php
 sed -i -e "s/$password = 'mon_password';/$password = '"$DB_password"';/g"  /var/www/html/poc.php
 
 

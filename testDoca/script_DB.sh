@@ -2,7 +2,7 @@
 
 
 # sur CentOS 7 showroom
-# DB test : 10.11.10.32   vra-002510
+# DB test : 10.11.10.34
 
 
 
@@ -19,13 +19,17 @@ git clone https://github.com/ympondaven/POCNDC.git
 
 
 # install MySLQ
-yum install -y  mariadb-server
+yum install -y  git wget vim mariadb-server
 systemctl start mariadb
 systemctl enable mariadb
 
 
+# Allow remote connections
+/etc/mysql/mysql.conf.d/mysqld.cnf
+
+
 # set password
-mysql -e "UPDATE mysql.user SET Password = PASSWORD('changeme') WHERE User = 'root'"
+mysql -e "UPDATE mysql.user SET Password = PASSWORD('$DB_password') WHERE User = 'root'"
 systemctl restart mariadb
 
 #mysql -u root -p
@@ -46,7 +50,7 @@ systemctl restart mariadb
 cat >/var/lib/mysql/extra <<EOF
 [client]
 user=root
-password=changeme
+password=$DB_password
 EOF
 
 
@@ -57,4 +61,16 @@ mysql  --defaults-extra-file=/var/lib/mysql/extra  < /tmp/POCNDC/sources/dump_te
 #USE testndc;
 #SHOW TABLES;
 #select * from contenu_base_testndc;
+
+
+# create user testndcuser and enable remote connection
+sed -i '2 i\bind-address = 0.0.0.0' /etc/my.cnf
+mysql --defaults-extra-file=/var/lib/mysql/extra -e "CREATE USER 'testndcuser'@'%' IDENTIFIED BY '$DB_password';"
+mysql --defaults-extra-file=/var/lib/mysql/extra -e "GRANT ALL PRIVILEGES ON testndc.* TO 'testndcuser'@'%';"
+mysql --defaults-extra-file=/var/lib/mysql/extra -e "FLUSH PRIVILEGES;"
+
+
+
+systemctl restart mariadb
+
 
