@@ -11,7 +11,10 @@
 
 # Recuperation des variables
 DB_IP = $1
+DB_password = $2
 echo "DB_IP = " $DB_IP
+echo "DB_password = " $DB_password
+
 
 
 
@@ -35,6 +38,8 @@ cp /tmp/POCNDC/sources/poc.php  /var/www/html/poc.php
 #update  /etc/httpd/conf/httpd.conf
 ############################################# TO DO ############################################# 
 # COPY MANUELLE A LA FIN
+
+
 
 
 # Il faudra modifier le poc.php aux endroits indiqués pour MySql et S3

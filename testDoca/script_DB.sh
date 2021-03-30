@@ -6,6 +6,12 @@
 
 
 
+# Recuperation des variables
+DB_password = $1
+echo "DB_password = " $DB_password
+
+
+
 # recup du repo git
 cd /tmp/
 git clone https://github.com/ympondaven/POCNDC.git
