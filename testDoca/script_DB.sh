@@ -7,7 +7,7 @@
 
 
 # Recuperation des variables
-DB_password = $1
+DB_password=$1
 echo "DB_password = " $DB_password
 
 
