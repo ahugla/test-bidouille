@@ -74,3 +74,6 @@ systemctl start minio
 systemctl enable minio
 
 
+
+
+
