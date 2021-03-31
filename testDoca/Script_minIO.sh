@@ -46,13 +46,16 @@ AssertFileIsExecutable=/opt/minio/bin/minio
 WorkingDirectory=/opt/minioUser=minio
 Group=minioPermissionsStartOnly=true
 EnvironmentFile=-/opt/minio/minio.conf
-ExecStartPre=/bin/bash -c "[ -n \"${MINIO_VOLUMES}\" ] || echo \"Variable MINIO_VOLUMES not set in /opt/minio/minio.conf\""ExecStart=/opt/minio/bin/minio server $MINIO_OPTS $MINIO_VOLUMESStandardOutput=journal
+ExecStartPre=/bin/bash -c "[ -n \"${MINIO_VOLUMES}\" ] || echo \"Variable MINIO_VOLUMES not set in /opt/minio/minio.conf\""
+ExecStart=/opt/minio/bin/minio server $MINIO_OPTS $MINIO_VOLUMES
+StandardOutput=journal
 StandardError=inherit# Specifies the maximum file descriptor number that can be opened by this process
 LimitNOFILE=65536# Disable timeout logic and wait until process is stopped
 TimeoutStopSec=0# SIGTERM signal is used to stop Minio
 KillSignal=SIGTERM
 SendSIGKILL=no
-SuccessExitStatus=0[Install]
+SuccessExitStatus=0
+[Install]
 WantedBy=multi-user.target
 EOF
 
