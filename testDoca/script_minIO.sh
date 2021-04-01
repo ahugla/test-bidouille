@@ -29,6 +29,13 @@ chmod +x /opt/minio/bin/minio
 mkdir /data
 
 
+# create content bucket et file for test
+mkdir /data/testndc
+wget https://raw.githubusercontent.com/ahugla/test-bidouille/master/testDoca/stockage_objet_NDC.txt
+mv stockage_objet_NDC.txt /data/testndc/
+
+
+
 # minIO config
 cat >/opt/minio/minio.conf <<EOF
 MINIO_VOLUMES=$MINIO_VOLUMES

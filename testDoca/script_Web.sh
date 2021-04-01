@@ -72,8 +72,8 @@ unzip aws.zip
 
 #UTILISER LE FICHIER poc.php du template ou sur git alex
 # Remplacer 'ma_secret_key_API' et 'MINIO_IP' par leur valeur
-sed -i -e 's/ma_secret_key_API/'"$DB_password"'/g'  /var/wwww/html/poc.php
-sed -i -e 's/MINIO_IP/'"$minIO_IP"'/g'  /var/wwww/html/poc.php
+sed -i -e 's/ma_secret_key_API/'"$DB_password"'/g'  /var/www/html/poc.php
+sed -i -e 's/MINIO_IP/'"$minIO_IP"'/g'  /var/www/html/poc.php
 
 
 
