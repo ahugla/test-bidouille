@@ -19,7 +19,7 @@ cd /tmp
 #install minIO
 mkdir /opt/minio
 mkdir /opt/minio/bin
-copy /tmp/sources/minio /opt/minio/bin/minio
+cp /tmp/sources/minio /opt/minio/bin/minio
 chmod +x /opt/minio/bin/minio
 
 
