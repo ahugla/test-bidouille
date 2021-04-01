@@ -7,6 +7,12 @@ DB_password=$1
 echo "DB_password = " $DB_password
 
 
+# Set parameters
+export MINIO_ACCESS_KEY=minioadmin
+export MINIO_VOLUMES="/data"
+export MINIO_OPTS="--address :9000"
+
+
 cd /tmp
 yum install -y wget
 
@@ -25,15 +31,13 @@ mkdir /data
 
 # minIO config
 cat >/opt/minio/minio.conf <<EOF
-MINIO_VOLUMES="/data"
-MINIO_OPTS="--address :9000"
-MINIO_ACCESS_KEY=minioadmin
+MINIO_VOLUMES=$MINIO_VOLUMES
+MINIO_OPTS=$MINIO_OPTS
+MINIO_ACCESS_KEY=$MINIO_ACCESS_KEY
 MINIO_SECRET_KEY=$DB_password
 EOF
 
-#export parameters
-export MINIO_VOLUMES="/data"
-export MINIO_OPTS="--address :9000"
+
 
 
 # create service
