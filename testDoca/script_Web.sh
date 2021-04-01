@@ -67,21 +67,42 @@ wget https://docs.aws.amazon.com/aws-sdk-php/v3/download/aws.zip        # AWS SD
 unzip aws.zip
 
 
-
-############################TO DO  DEBUT ##################################
-
-# en tout debut de php
-date_default_timezone_set('Europe/Paris');
-
-# ajouter dans php:
- 'endpoint' => 'http://10.11.10.33:9000',
-  credential
-  bucket
-  fichier
-############################TO DO  FIN   ##################################
+#UTILISER LE FICHIER poc.php du template ou sur git alex
+# Remplacer 'ma_secret_key_API' et 'MINIO_IP' par leur valeur
+sed -i -e 's/ma_secret_key_API/'"$DB_password"'/g'  /var/wwww/html/poc.php
+sed -i -e 's/MINIO_IP/'"$minIO_IP"'/g'  /var/wwww/html/poc.php
 
 
 
 # redemarrage des services
 systemctl restart httpd
 systemctl enable httpd
+
+
+
+
+#EXEMPLE OK
+#echo "<p>\n";
+#require 'aws/aws-autoloader.php';
+#use Aws\S3\S3Client;
+#
+#    $bucket = 'truc';
+#    $fichier = 'test.txt';
+    #$clef_API = 'minioadmin';
+    #$secret_API = 'changeme';
+#
+#try {
+    #$s3 = new S3Client([
+        #'region' => 'eu-west-3',
+        #'version' => '2006-03-01',
+        #'endpoint' => 'http://10.11.10.33:9000',
+        #'credentials' => [
+            #'key'    => $clef_API ,
+            #'secret' => $secret_API ,
+        #],
+    #]);
+    #$contenu = $s3->getObject(array(
+        #'Bucket' => $bucket,
+#
+
+
