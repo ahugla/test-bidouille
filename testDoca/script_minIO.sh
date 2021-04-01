@@ -12,7 +12,8 @@ yum install -y wget
 
 
 #download minIO
-mkdir /opt/minio/bin/minio
+mkdir /opt/minio
+mkdir /opt/minio/bin
 wget https://dl.minio.io/server/minio/release/linux-amd64/minio -O /opt/minio/bin/minio
 chmod +x /opt/minio/bin/minio
 
