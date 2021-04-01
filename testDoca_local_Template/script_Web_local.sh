@@ -50,7 +50,7 @@ sed -i -e "s/$password = 'mon_password';/$password = '"$DB_password"';/g"  /var/
 
 #Install aws-sdk-php V3 par zip :
 mkdir /var/www/html/aws
-copy /tmp/sources/aws.zip /var/www/html/aws/aws.zip
+cp /tmp/sources/aws.zip /var/www/html/aws/aws.zip
 cd /var/www/html/aws
 unzip aws.zip
 
