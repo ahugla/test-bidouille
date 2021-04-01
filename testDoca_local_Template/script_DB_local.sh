@@ -1,8 +1,6 @@
 
+# sur CentOS 7 
 
-
-# sur CentOS 7 showroom
-# DB test : 10.11.10.34
 
 
 
@@ -11,16 +9,10 @@ DB_password=$1
 echo "DB_password = " $DB_password
 
 
-
-# recup du repo git
 cd /tmp/
-git clone https://github.com/ahugla/test-bidouille.git
-#git clone https://github.com/ympondaven/POCNDC.git
-
 
 
 # install MySLQ
-yum install -y  git wget vim mariadb-server
 systemctl start mariadb
 systemctl enable mariadb
 
@@ -33,18 +25,6 @@ systemctl enable mariadb
 mysql -e "UPDATE mysql.user SET Password = PASSWORD('$DB_password') WHERE User = 'root'"
 systemctl restart mariadb
 
-#mysql -u root -p
-#MariaDB [(none)]> SHOW DATABASES;
-#+--------------------+
-#| Database           |
-#+--------------------+
-#| information_schema |
-#| mysql              |
-#| performance_schema |
-#| test               |
-#+--------------------+
-#4 rows in set (0.00 sec)
-
 
 
 # creation du fichier de compte
@@ -55,13 +35,8 @@ password=$DB_password
 EOF
 
 
-
 # create base et populate
-mysql  --defaults-extra-file=/var/lib/mysql/extra  < /tmp/test-bidouille/testDoca/dump_testndc.sql
-#mysql -u root -p
-#USE testndc;
-#SHOW TABLES;
-#select * from contenu_base_testndc;
+mysql  --defaults-extra-file=/var/lib/mysql/extra  < /tmp/sources/dump_testndc.sql
 
 
 # create user testndcuser and enable remote connection
@@ -73,4 +48,5 @@ mysql --defaults-extra-file=/var/lib/mysql/extra -e "FLUSH PRIVILEGES;"
 
 
 systemctl restart mariadb
+
 

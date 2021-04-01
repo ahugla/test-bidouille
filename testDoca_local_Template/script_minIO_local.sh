@@ -1,4 +1,5 @@
 
+# sur CentOS 7 
 
 
 # Recuperation des variables
@@ -13,13 +14,12 @@ export MINIO_OPTS="--address :9000"
 
 
 cd /tmp
-yum install -y wget
 
 
-#download minIO
+#install minIO
 mkdir /opt/minio
 mkdir /opt/minio/bin
-wget https://dl.minio.io/server/minio/release/linux-amd64/minio -O /opt/minio/bin/minio
+copy /tmp/sources/minio /opt/minio/bin/minio
 chmod +x /opt/minio/bin/minio
 
 
@@ -30,8 +30,8 @@ mkdir /data
 
 # create content bucket et file for test
 mkdir /data/testndc
-wget https://raw.githubusercontent.com/ahugla/test-bidouille/master/testDoca/stockage_objet_NDC.txt
-mv stockage_objet_NDC.txt /data/testndc/
+copy /tmp/sources/stockage_objet_NDC.txt /data/testndc/stockage_objet_NDC.txt
+
 
 
 
@@ -87,5 +87,8 @@ EOF
 systemctl daemon-reload
 systemctl start minio
 systemctl enable minio
+
+
+
 
 

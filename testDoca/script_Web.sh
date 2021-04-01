@@ -107,5 +107,3 @@ systemctl enable httpd
     #$contenu = $s3->getObject(array(
         #'Bucket' => $bucket,
 #
-
-
