@@ -22,11 +22,11 @@ wget https://raw.githubusercontent.com/ahugla/test-bidouille/master/testDoca/poc
 wget https://docs.aws.amazon.com/aws-sdk-php/v3/download/aws.zip -O /tmp/sources/aws.zip
 
 
-
-
-#  RESTE A :
-#   -  AJUSTER LES SCRIPTS
-#   -  COPIER LES SCRIPTS EN LOCAL
+#Copie des scripts en local
+cd /tmp
+wget https://raw.githubusercontent.com/ahugla/test-bidouille/master/testDoca_local_Template/script_DB_local.sh
+wget https://raw.githubusercontent.com/ahugla/test-bidouille/master/testDoca_local_Template/script_Web_local.sh
+wget https://raw.githubusercontent.com/ahugla/test-bidouille/master/testDoca_local_Template/script_minIO_local.sh
 
 
 
