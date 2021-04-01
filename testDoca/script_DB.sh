@@ -14,7 +14,8 @@ echo "DB_password = " $DB_password
 
 # recup du repo git
 cd /tmp/
-git clone https://github.com/ympondaven/POCNDC.git
+git clone https://github.com/ahugla/test-bidouille.git
+#git clone https://github.com/ympondaven/POCNDC.git
 
 
 
@@ -56,7 +57,7 @@ EOF
 
 
 # create base et populate
-mysql  --defaults-extra-file=/var/lib/mysql/extra  < /tmp/POCNDC/sources/dump_testndc.sql
+mysql  --defaults-extra-file=/var/lib/mysql/extra  < /tmp/test-bidouille/testDoca/dump_testndc.sql
 #mysql -u root -p
 #USE testndc;
 #SHOW TABLES;

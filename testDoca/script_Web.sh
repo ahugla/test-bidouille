@@ -25,13 +25,16 @@ yum install -y php php-common php-opcache php-mcrypt php-cli php-gd php-curl php
 
 
 
-# recup du repo git
-cd /tmp/
-git clone https://github.com/ympondaven/POCNDC.git
+# recup du repo git et install web php 
+#cd /tmp/
+#git clone https://github.com/ympondaven/POCNDC.git
+#cp /tmp/POCNDC/sources/poc.php  /var/www/html/poc.php
 
 
-#install web php 
-cp /tmp/POCNDC/sources/poc.php  /var/www/html/poc.php
+# recup du repo git et install web php 
+cd /tmp
+git clone https://github.com/ahugla/test-bidouille.git
+cp /tmp/test-bidouille/testDoca/poc.php  /var/www/html/poc.php
 
 
 
