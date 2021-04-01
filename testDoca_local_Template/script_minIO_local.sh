@@ -30,7 +30,7 @@ mkdir /data
 
 # create content bucket et file for test
 mkdir /data/testndc
-copy /tmp/sources/stockage_objet_NDC.txt /data/testndc/stockage_objet_NDC.txt
+cp /tmp/sources/stockage_objet_NDC.txt /data/testndc/stockage_objet_NDC.txt
 
 
 
