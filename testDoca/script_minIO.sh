@@ -31,6 +31,9 @@ MINIO_ACCESS_KEY=minioadmin
 MINIO_SECRET_KEY=$DB_password
 EOF
 
+#export parameters
+export MINIO_VOLUMES="/data"
+export MINIO_OPTS="--address :9000"
 
 
 # create service
@@ -50,7 +53,7 @@ PermissionsStartOnly=true
 EnvironmentFile=/opt/minio/minio.conf
 ExecStartPre=/bin/bash -c "[ -n \"${MINIO_VOLUMES}\" ] || echo \"Variable MINIO_VOLUMES not set in /opt/minio/minio.conf\""
 
-ExecStart=/opt/minio/bin/minio server $MINIO_OPTS $MINIO_VOLUMES
+ExecStart=/opt/minio/bin/minio server ${MINIO_OPTS} ${MINIO_VOLUMES}
 
 StandardOutput=journal
 StandardError=inherit
